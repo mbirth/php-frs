@@ -53,29 +53,25 @@ if (isset($_GET['action'])) {
 
 if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     // Authenticated
-    try {
-        $created = $_SESSION['access_token']['created'];
-        $expires = $_SESSION['access_token']['expires_in'];
-        $expire_stamp = intval($created) + intval($expires);
-        $data['session_created'] = $created;
-        $data['session_expires'] = $expires;
-        $data['session_time_left'] = ($expire_stamp) - time();
-        $client->setAccessToken($_SESSION['access_token']);
-    } catch (Exception $e) {
-        print_r($e);
-        $_SESSION['access_token'] = $client->refreshToken(null);
-        print_r($_SESSION['access_token']);
-    }
+    $created = $_SESSION['access_token']['created'];
+    $expires = $_SESSION['access_token']['expires_in'];
+    $expire_stamp = intval($created) + intval($expires);
+    $data['session_created'] = $created;
+    $data['session_expires'] = $expires;
+    $data['session_time_left'] = ($expire_stamp) - time();
 
-    $data['auth_needed'] = false;
-
-    try {
-        $oauth = new Google_Service_Oauth2($client);
-        $userdata = $oauth->userinfo->get();
-    } catch (Exception $e) {
-        print_r($e);
+    $client->setAccessToken($_SESSION['access_token']);
+    if ($client->isAccessTokenExpired()) {
+        // TODO: Save everything in session
+        // TODO: Redirect to $client->createAuthUrl(); to reauthenticate
+        echo "Token expired!";
+        session_destroy();
         die();
     }
+
+    $oauth = new Google_Service_Oauth2($client);
+    $userdata = $oauth->userinfo->get();
+
     $data['user'] = array(
         'name_first' => $userdata->givenName,
         'name_last'  => $userdata->familyName,
@@ -85,26 +81,33 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
         'gender'     => $userdata->gender,
     );
 
+    $data['date_today'] = date('Y-m-d');
+
+
     // Check $userdata->verifiedEmail and deny if not verified.
     if (!$userdata->verifiedEmail) {
         $tpl = $m->loadTemplate('notverified_html');
         $tpl_done = true;
-    }
-
-    switch ($_GET['action']) {
-        case 'faq':
-            $tpl = $m->loadTemplate('faq_html');
-            break;
-        default:
-            if (!$tpl_done) {
-                $tpl = $m->loadTemplate('loggedin_html');
+    } else {
+        switch ($_GET['action']) {
+            case 'event':
+                $tpl = $m->loadTemplate('event_html');
                 $tpl_done = true;
-            }
-            break;
+                break;
+            case 'hotel':
+                $tpl = $m->loadTemplate('hotel_html');
+                $tpl_done = true;
+                break;
+            default:
+                if (!$tpl_done) {
+                    $tpl = $m->loadTemplate('loggedin_html');
+                    $tpl_done = true;
+                }
+                break;
+        }
     }
 } elseif (!$tpl_done) {
     // Not authenticated
-    $data['auth_needed'] = true;
     $data['auth_url'] = $client->createAuthUrl();
     $tpl = $m->loadTemplate('index_html');
 }

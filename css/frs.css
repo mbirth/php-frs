@@ -87,3 +87,9 @@
   background-color: rgb(238, 238, 238);
   cursor: pointer;
 }
+
+h3 .material-icons {
+  color: rgb(117, 117, 117);
+  font-size: 0.9em;
+  vertical-align: -0.15em;
+}

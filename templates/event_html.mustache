@@ -1,0 +1,30 @@
+{{> html_head}}
+{{> mdl_head}}
+{{> mdl_content_head}}
+
+<div class="frs-crumbs mdl-color-text--grey-500">
+  <a href="./">Fake Reservation System</a> &gt; Create Event
+</div>
+
+<h3><i class="material-icons">event</i> Event Reservation</h3>
+
+<p>
+<form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="reservationFor_name">
+    <label class="mdl-textfield__label" for="reservationFor_name">Name</label>
+  </div>
+</form>
+<!-- Numeric Textfield with Floating Label -->
+<form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="datetime-local" min="{{date_today}}" id="reservationFor_startDate">
+    <label class="mdl-textfield__label" for="reservationFor_startDate">Start Date</label>
+    <span class="mdl-textfield__error">Input is not a date!</span>
+  </div>
+</form>
+</p>
+
+{{> mdl_content_foot}}
+{{> mdl_foot}}
+{{> html_foot}}
