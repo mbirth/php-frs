@@ -1,5 +1,9 @@
 /_devel_/
+
+# Composer stuff
 /auth.json
-/client_secret.json
 /composer.phar
 /vendor/
+
+# Google API Client credentials (https://console.developers.google.com/apis/)
+/client_secret.json
