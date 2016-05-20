@@ -59,3 +59,8 @@
 .mdl-mini-footer--link-list li:hover {
   color: white;
 }
+
+#signin-button:hover {
+  display: block;
+  background: url(../img/btn_google_signin_dark_focus_web.png);
+}

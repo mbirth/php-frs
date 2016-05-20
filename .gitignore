@@ -1,3 +1,5 @@
 /_devel_/
+/auth.json
+/client_secret.json
 /composer.phar
 /vendor/

@@ -9,5 +9,14 @@ $m = new Mustache_Engine(array(
     'logger' => new Mustache_Logger_StreamLogger('php://stderr'),
 ));
 
+$data = array();
+
+$client = new Google_Client();
+$client->setAuthConfigFile('client_secret.json');
+$client->setRedirectUri('https://raspi.mbirth.de/dev/FRS/');
+$client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
+
+$data['auth_url'] = $client->createAuthUrl();
+
 $tpl = $m->loadTemplate('index_html');
-echo $tpl->render();
+echo $tpl->render($data);
