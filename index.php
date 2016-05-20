@@ -39,22 +39,70 @@ if (isset($_GET['code']) && $_GET['code']) {
     exit(0);
 }
 
-if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+$tpl_done = false;
+
+// route pages that work with and without login
+if (isset($_GET['action'])) {
+    switch ($_GET['action']) {
+        case 'faq':
+            $tpl = $m->loadTemplate('faq_html');
+            $tpl_done = true;
+            break;
+    }
+}
+
+if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     // Authenticated
-    $client->setAccessToken($_SESSION['access_token']);
+    try {
+        $created = $_SESSION['access_token']['created'];
+        $expires = $_SESSION['access_token']['expires_in'];
+        $expire_stamp = intval($created) + intval($expires);
+        $data['session_created'] = $created;
+        $data['session_expires'] = $expires;
+        $data['session_time_left'] = ($expire_stamp) - time();
+        $client->setAccessToken($_SESSION['access_token']);
+    } catch (Exception $e) {
+        print_r($e);
+        $_SESSION['access_token'] = $client->refreshToken(null);
+        print_r($_SESSION['access_token']);
+    }
 
     $data['auth_needed'] = false;
 
-    $oauth = new Google_Service_Oauth2($client);
-    $userdata = $oauth->userinfo->get();
-    $data['user']['name_first'] = $userdata->givenName;
-    $data['userdata'] = print_r($userdata, true);
+    try {
+        $oauth = new Google_Service_Oauth2($client);
+        $userdata = $oauth->userinfo->get();
+    } catch (Exception $e) {
+        print_r($e);
+        die();
+    }
+    $data['user'] = array(
+        'name_first' => $userdata->givenName,
+        'name_last'  => $userdata->familyName,
+        'name'       => $userdata->name,
+        'picture'    => $userdata->picture,
+        'email'      => $userdata->email,
+        'gender'     => $userdata->gender,
+    );
 
+    // Check $userdata->verifiedEmail and deny if not verified.
+    if (!$userdata->verifiedEmail) {
+        $tpl = $m->loadTemplate('notverified_html');
+        $tpl_done = true;
+    }
 
-    // TODO: Check $userdata->verifiedEmail and deny if not verified.
-
-    $tpl = $m->loadTemplate('loggedin_html');
-} else {
+    switch ($_GET['action']) {
+        case 'faq':
+            $tpl = $m->loadTemplate('faq_html');
+            break;
+        default:
+            if (!$tpl_done) {
+                $tpl = $m->loadTemplate('loggedin_html');
+                $tpl_done = true;
+            }
+            break;
+    }
+} elseif (!$tpl_done) {
     // Not authenticated
     $data['auth_needed'] = true;
     $data['auth_url'] = $client->createAuthUrl();

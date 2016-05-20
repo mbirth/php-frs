@@ -6,7 +6,7 @@
       <!-- Navigation -->
       <nav class="mdl-navigation">
         {{# user.name_first}}
-        <span class="mdl-navigation__link mdl-color-text--grey-800">Hello, {{user.name_first}}!</span>
+        <span class="mdl-navigation__link mdl-color-text--grey-800">Hello, {{user.name_first}}!<span id="session_expires"></span></span>
         {{/ user.name_first}}
         <button id="frs-menu-top" class="mdl-button mdl-js-button mdl-button--icon">
             <span class="material-icons">more_vert</span>
@@ -19,3 +19,25 @@
   </header>
   <div class="frs-ribbon"></div>
   <main class="frs-main mdl-layout__content">
+
+<script>
+    var page_load_time = Math.floor(Date.now() / 1000);
+    var seconds_left = {{session_time_left}};
+    var expire_time = page_load_time + seconds_left;
+
+    function updateTimeLeft() {
+        var now = Math.floor(Date.now() / 1000);
+        var time_left = expire_time - now;
+        var obj = document.getElementById('session_expires');
+        var minutes = Math.floor(time_left / 60);
+        var seconds = time_left % 60;
+        if (minutes+seconds > 0) {
+            obj.innerHTML = ' (' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2) + ')';
+        } else {
+            obj.innerHTML = '';
+            window.clearInterval(window.updateTimer);
+        }
+    }
+
+    var updateTimer = window.setInterval('updateTimeLeft();', 1000);
+</script>

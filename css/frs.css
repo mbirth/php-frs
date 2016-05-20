@@ -66,6 +66,24 @@
 }
 
 .mdl-layout a {
-    color: inherit !important;
-    text-decoration: inherit !important;
+  color: inherit !important;
+  text-decoration: inherit !important;
+}
+
+.mdl-list__item-avatar {
+  background-color: transparent !important;
+  color: rgb(117, 117, 117) !important;
+}
+
+.frs-selector li {
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.frs-selector li:hover {
+  background-color: rgb(238, 238, 238);
+  cursor: pointer;
 }

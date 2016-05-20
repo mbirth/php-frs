@@ -3,214 +3,53 @@
 {{> mdl_content_head}}
 
 <div class="frs-crumbs mdl-color-text--grey-500">
-  Not Google &gt; Not Google Now &gt; Fake Reservation System
+  <a href="./">Fake Reservation System</a> &gt; Welcome
 </div>
 
 <h3>What is this?</h3>
 
-{{# auth_needed}}
 <p>
+Some time ago, Google introduced features to highlight special items from your
+mails, like hotel reservations, event tickets, car rentals and more.
+</p>
+
+<p>
+Later, they added features to Google Now on Android smartphones so that you
+get notified when to leave to catch your flight or event … or how to get to
+your booked hotel and when the checkin opens.
+</p>
+
+<p>
+And recently, they even added a feature to Google Search, that shows your
+booked items when you search for similar things. All that from a mail in your
+inbox.
+</p>
+
+<p>
+A nice overview with sample images can be found on Google's Developer pages:<br/>
+<a href="https://developers.google.com/gmail/markup/">https://developers.google.com/gmail/markup/</a>.
+</p>
+
+<p>
+But while the needed data is easy to be added to confirmation mails, many
+companies didn't do this yet. And sometimes, you don't even get any confirmation
+by email. To make those things show up in Google Now, I made this tool.
+</p>
+
+
+<h3>What does it do?</h3>
+
+<p>
+After login with your Google account, you can select a type of reservation,
+fill in all your details and send it to the mail address of your account.
+We will add all the neccessary markup to the mail so that Google Now can
+recognise it. This will make the events/reservations show up when you need
+them.
+</p>
+
+<p>
+To begin, please sign in:<br/>
 <a href="{{auth_url}}"><img id="signin-button" src="img/btn_google_signin_dark_normal_web.png"/></a>
-</p>
-{{/ auth_needed}}
-
-{{# userdata}}
-<p>
-<pre>{{userdata}}</pre>
-</p>
-{{/ userdata}}
-
-<p>
-            Hello, world! ({{action}})
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
-</p>
-<p>
-            Hello, world!
 </p>
 
 {{> mdl_content_foot}}

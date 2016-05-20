@@ -3,19 +3,62 @@
 {{> mdl_content_head}}
 
 <div class="frs-crumbs mdl-color-text--grey-500">
-  Not Google &gt; Not Google Now &gt; Fake Reservation System
+  <a href="./">Fake Reservation System</a> &gt; Logged in
 </div>
 
-<h3>What is this?</h3>
-
-{{# userdata}}
-<p>
-<pre>{{userdata}}</pre>
-</p>
-{{/ userdata}}
+<h3>Select the type of reservation you want to create</h3>
 
 <p>
-    Welcome, to the <strong>Fake Reservation System</strong>. Where you can book travels you'll never attend.
+<ul class="frs-selector mdl-list">
+  <li class="mdl-list__item mdl-list__item--three-line" onclick="location.href='./event';">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">event</i>
+      <span>Generic Event</span>
+      <span class="mdl-list__item-text-body">
+        Use this type to declare a reservation for one or more guests at an event.
+        Tickets may be declared as well.
+      </span>
+    </span>
+  </li>
+  <li class="mdl-list__item mdl-list__item--three-line" onclick="location.href='./flight';">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">flight_takeoff</i>
+      <span>Flight Reservation</span>
+      <span class="mdl-list__item-text-body">
+        Use this type to declare a reservation for air travel.
+      </span>
+    </span>
+  </li>
+  <li class="mdl-list__item mdl-list__item--three-line" onclick="location.href='./hotel';">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">hotel</i>
+      <span>Hotel Reservation</span>
+      <span class="mdl-list__item-text-body">
+        Use this type to declare a reservation for one or more guests at a hotel
+        or place of lodging.
+      </span>
+    </span>
+  </li>
+  <li class="mdl-list__item mdl-list__item--three-line" onclick="location.href='./rentalcar';">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">directions_car</i>
+      <span>Rental Car Reservation</span>
+      <span class="mdl-list__item-text-body">
+        Use this type to declare a reservation for a rental car.
+      </span>
+    </span>
+  </li>
+  <li class="mdl-list__item mdl-list__item--three-line" onclick="location.href='./restaurant';">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">restaurant</i>
+      <span>Restaurant Reservation</span>
+      <span class="mdl-list__item-text-body">
+        Use this type to declare a reservation for one or more guests at a
+        restaurant or other food establishment.
+      </span>
+    </span>
+  </li>
+</ul>
 </p>
 
 {{> mdl_content_foot}}
