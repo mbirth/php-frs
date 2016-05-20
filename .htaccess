@@ -1,3 +1,6 @@
 <Files ~ "\.json$">
     Require all denied
 </Files>
+
+RewriteEngine on
+RewriteRule ^([^.]+)/?$ index.php?action=$1 [L,NC]

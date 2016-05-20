@@ -64,3 +64,8 @@
   display: block;
   background: url(../img/btn_google_signin_dark_focus_web.png);
 }
+
+.mdl-layout a {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
