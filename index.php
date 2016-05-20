@@ -13,10 +13,32 @@ $data = array();
 
 $client = new Google_Client();
 $client->setAuthConfigFile('client_secret.json');
-$client->setRedirectUri('https://raspi.mbirth.de/dev/FRS/');
 $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
 
-$data['auth_url'] = $client->createAuthUrl();
+session_start();
+
+if (isset($_GET['code']) && $_GET['code']) {
+    // OAuth2 result
+    $client->authenticate($_GET['code']);
+    $_SESSION['access_token'] = $client->getAccessToken();
+    header('Location: ' . $client->getRedirectUri());
+    exit(0);
+}
+
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+    // Authenticated
+    $client->setAccessToken($_SESSION['access_token']);
+
+    $data['auth_needed'] = false;
+
+    $oauth = new Google_Service_Oauth2($client);
+    $userdata = $oauth->userinfo->get();
+    $data['userdata'] = print_r($userdata, true);
+} else {
+    // Not authenticated
+    $data['auth_needed'] = true;
+    $data['auth_url'] = $client->createAuthUrl();
+}
 
 $tpl = $m->loadTemplate('index_html');
 echo $tpl->render($data);

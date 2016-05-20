@@ -8,9 +8,17 @@
 
 <h3>What is this?</h3>
 
+{{# auth_needed}}
 <p>
 <a href="{{auth_url}}"><img id="signin-button" src="img/btn_google_signin_dark_normal_web.png"/></a>
 </p>
+{{/ auth_needed}}
+
+{{# userdata}}
+<p>
+<pre>{{userdata}}</pre>
+</p>
+{{/ userdata}}
 
 <p>
             Hello, world!
