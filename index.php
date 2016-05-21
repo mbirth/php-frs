@@ -62,10 +62,10 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
     $client->setAccessToken($_SESSION['access_token']);
     if ($client->isAccessTokenExpired()) {
-        // TODO: Save everything in session
+        // TODO: Save everything (POST data) in session
         // TODO: Redirect to $client->createAuthUrl(); to reauthenticate
-        echo "Token expired!";
-        session_destroy();
+        echo "Token expired! <a href=\"" . $client->createAuthUrl() . "\">Request new one</a>.";
+        #session_destroy();
         die();
     }
 
