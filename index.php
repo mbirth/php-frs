@@ -97,6 +97,8 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
             case 'hotel':
                 $tpl = $m->loadTemplate('hotel_html');
                 $tpl_done = true;
+                $action = 'hotel';
+                require 'prep_form.php';
                 break;
             default:
                 if (!$tpl_done) {
