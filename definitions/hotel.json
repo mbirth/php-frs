@@ -1,0 +1,196 @@
+{
+    "bookingAgent_name": {
+        "title": "Name",
+        "type": "text",
+        "required": false,
+        "group": "Booking Agency",
+        "short": true
+    },
+    "bookingAgent_url": {
+        "title": "URL",
+        "type": "url",
+        "required": false,
+        "group": "Booking Agency"
+    },
+    "bookingTime": {
+        "title": "Booking Date",
+        "type": "datetime",
+        "required": false,
+        "group": "Booking Agency"
+    },
+    "cancelReservationUrl": {
+        "title": "Cancel URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotlinks"
+    },
+    "checkinDate": {
+        "title": "Checkin Time",
+        "type": "datetime",
+        "required": true,
+        "group": "Date"
+    },
+    "checkoutDate": {
+        "title": "Checkout Time",
+        "type": "datetime",
+        "required": true,
+        "group": "Date"
+    },
+    "confirmReservationUrl": {
+        "title": "Confirm URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotlinks"
+    },
+    "lodgingUnitDescription": {
+        "title": "Room Description",
+        "type": "text",
+        "required": false,
+        "group": "Booking Information"
+    },
+    "modifiedTime": {
+        "title": "Modified Time",
+        "type": "datetime",
+        "required": false,
+        "group": "Metadata"
+    },
+    "modifyReservationUrl": {
+        "title": "Modify URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotlinks"
+    },
+    "numAdults": {
+        "title": "Number of Adults",
+        "type": "number",
+        "required": false,
+        "group": "Booking Information",
+        "short": true
+    },
+    "numChildren": {
+        "title": "Number of Children",
+        "type": "number",
+        "required": false,
+        "group": "Booking Information",
+        "short": true
+    },
+    "price": {
+        "title": "Price",
+        "type": "decimal",
+        "required": false,
+        "group": "Booking Information",
+        "short": true
+    },
+    "priceCurrency": {
+        "title": "Currency",
+        "type": "text",
+        "required": false,
+        "group": "Booking Information",
+        "short": true
+    },
+    "programMembership_memberNumber": {
+        "title": "Member No.",
+        "type": "text",
+        "required": false,
+        "group": "Program Membership",
+        "short": true
+    },
+    "programMembership_program": {
+        "title": "Name of Program",
+        "type": "text",
+        "required": false,
+        "group": "Program Membership",
+        "short": true
+    },
+    "reservationFor_address_addressCountry": {
+        "title": "Country",
+        "type": "country",
+        "required": true,
+        "group": "Hotel Information"
+    },
+    "reservationFor_address_addressLocality": {
+        "title": "City",
+        "type": "text",
+        "required": true,
+        "group": "Hotel Information"
+    },
+    "reservationFor_address_addressRegion": {
+        "title": "Region",
+        "type": "text",
+        "required": true,
+        "group": "Hotel Information",
+        "short": true
+    },
+    "reservationFor_address_postalCode": {
+        "title": "Zip Code",
+        "type": "number",
+        "required": true,
+        "group": "Hotel Information",
+        "short": true
+    },
+    "reservationFor_address_streetAddress": {
+        "title": "Street",
+        "type": "text",
+        "required": true,
+        "group": "Hotel Information"
+    },
+    "reservationFor_name": {
+        "title": "Hotel Name",
+        "type": "text",
+        "required": true,
+        "group": "Hotel Information"
+    },
+    "reservationFor_image": {
+        "title": "Hotel Image URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotel Information"
+    },
+    "reservationFor_telephone": {
+        "title": "Telephone",
+        "type": "tel",
+        "required": true,
+        "group": "Hotel Information",
+        "short": true
+    },
+    "reservationFor_url": {
+        "title": "Website URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotel Information"
+    },
+    "reservationNumber": {
+        "title": "Reservation #",
+        "type": "text",
+        "required": true,
+        "group": "Booking Information",
+        "short": true
+    },
+    "reservationStatus": {
+        "title": "Status",
+        "type": "status",
+        "required": true,
+        "group": "Booking Information",
+        "short": true
+    },
+    "underName_name": {
+        "title": "Name on Reservation",
+        "type": "text",
+        "required": true,
+        "group": "Booking Information",
+        "default": "USER_NAME"
+    },
+    "underName_email": {
+        "title": "Email address",
+        "type": "email",
+        "required": false,
+        "group": "Booking Information",
+        "default": "USER_EMAIL"
+    },
+    "url": {
+        "title": "Booking URL",
+        "type": "url",
+        "required": false,
+        "group": "Hotlinks"
+    }
+}
