@@ -10,22 +10,15 @@
 
 <form action="./" method="post">
 
-<p>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" required id="reservationFor_name">
-    <label class="mdl-textfield__label" for="reservationFor_name">Name</label>
-    <span class="mdl-textfield__error">Please input a name!</span>
-  </div>
-</p>
+{{#form_data}}
+<h4>{{group_name}}</h4>
 
-<p>
-<!-- Numeric Textfield with Floating Label -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="datetime-local" min="{{date_today}}" required id="reservationFor_startDate">
-    <label class="mdl-textfield__label" for="reservationFor_checkinDate">Checkin Time</label>
-    <span class="mdl-textfield__error">Input is empty or not a date!</span>
-  </div>
-</p>
+    {{#fields}}
+        {{>mdl_input}}
+    {{/fields}}
+
+
+{{/form_data}}
 
 <button id="frs-button-send" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
   <i class="material-icons">send</i>
