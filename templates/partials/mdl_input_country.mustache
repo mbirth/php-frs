@@ -1,7 +1,8 @@
 <p>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" {{#required}}required{{/required}} id="{{field_id}}" value="{{value}}"/>
-    <label class="mdl-textfield__label" for="{{field_id}}">{{title}} (SELECTOR tbd!)</label>
-    <span class="mdl-textfield__error">Please input a country!</span>
-  </div>
+    <select name="{{field_id}}" size="1">
+        <!-- https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 -->
+        <option value="DE">Germany</option>
+        <option value="UK">United Kingdom</option>
+        <option value="US">United States of America</option>
+    </select>
 </p>

@@ -112,11 +112,24 @@
             "group": 3,
             "short": true
         },
-        "reservationFor_address_addressCountry": {
-            "title": "Country",
-            "type": "country",
+        "reservationFor_name": {
+            "title": "Hotel Name",
+            "type": "text",
             "required": true,
             "group": 0
+        },
+        "reservationFor_address_streetAddress": {
+            "title": "Street",
+            "type": "text",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_address_postalCode": {
+            "title": "Zip Code",
+            "type": "number",
+            "required": true,
+            "group": 0,
+            "short": true
         },
         "reservationFor_address_addressLocality": {
             "title": "City",
@@ -131,22 +144,9 @@
             "group": 0,
             "short": true
         },
-        "reservationFor_address_postalCode": {
-            "title": "Zip Code",
-            "type": "number",
-            "required": true,
-            "group": 0,
-            "short": true
-        },
-        "reservationFor_address_streetAddress": {
-            "title": "Street",
-            "type": "text",
-            "required": true,
-            "group": 0
-        },
-        "reservationFor_name": {
-            "title": "Hotel Name",
-            "type": "text",
+        "reservationFor_address_addressCountry": {
+            "title": "Country",
+            "type": "country",
             "required": true,
             "group": 0
         },
@@ -165,6 +165,12 @@
         },
         "reservationFor_url": {
             "title": "Website URL",
+            "type": "url",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_image": {
+            "title": "Hotel Image URL",
             "type": "url",
             "required": false,
             "group": 0
