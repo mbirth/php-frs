@@ -93,7 +93,7 @@
         },
         "priceCurrency": {
             "title": "Currency",
-            "type": "text",
+            "type": "currency",
             "required": false,
             "group": 2,
             "short": true
