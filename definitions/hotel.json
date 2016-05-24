@@ -98,15 +98,15 @@
             "group": 2,
             "short": true
         },
-        "programMembership_memberNumber": {
-            "title": "Member No.",
+        "programMembership_program": {
+            "title": "Name of Program",
             "type": "text",
             "required": false,
             "group": 3,
             "short": true
         },
-        "programMembership_program": {
-            "title": "Name of Program",
+        "programMembership_memberNumber": {
+            "title": "Member No.",
             "type": "text",
             "required": false,
             "group": 3,
@@ -148,12 +148,6 @@
             "title": "Country",
             "type": "country",
             "required": true,
-            "group": 0
-        },
-        "reservationFor_image": {
-            "title": "Hotel Image URL",
-            "type": "url",
-            "required": false,
             "group": 0
         },
         "reservationFor_telephone": {
