@@ -49,8 +49,10 @@ if (isset($_GET['action'])) {
             $tpl_done = true;
             break;
         case 'send':
+            // Store input in session
             $form_type = $_POST['form_type'];
-            // TODO: Store form data in session
+            $skey = 'form_' . $form_type;
+            $_SESSION[$skey] = $_POST;
             break;
     }
 }
@@ -66,7 +68,6 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
     $client->setAccessToken($_SESSION['access_token']);
     if ($client->isAccessTokenExpired()) {
-        // TODO: Save everything (POST data) in session
         // TODO: Redirect to $client->createAuthUrl(); to reauthenticate
         echo "Token expired! <a href=\"" . $client->createAuthUrl() . "\">Request new one</a>.";
         #session_destroy();
