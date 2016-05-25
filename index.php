@@ -48,6 +48,10 @@ if (isset($_GET['action'])) {
             $tpl = $m->loadTemplate('faq_html');
             $tpl_done = true;
             break;
+        case 'send':
+            $form_type = $_POST['form_type'];
+            // TODO: Store form data in session
+            break;
     }
 }
 
@@ -90,6 +94,9 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
         $tpl_done = true;
     } else {
         switch ($_GET['action']) {
+            case 'send':
+                echo "This would send the mail...";
+                break;
             case 'event':
                 $tpl = $m->loadTemplate('event_html');
                 $tpl_done = true;
