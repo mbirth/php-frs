@@ -68,6 +68,13 @@
 .mdl-layout a {
   color: inherit !important;
   text-decoration: inherit !important;
+  -webkit-transition: all 1s;
+          transition: all 1s;
+}
+
+.mdl-layout a:hover {
+  color: rgb(0, 0, 192) !important;
+  text-decoration: underline !important;
 }
 
 .mdl-list__item-avatar {
