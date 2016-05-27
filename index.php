@@ -97,6 +97,13 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
         switch ($_GET['action']) {
             case 'send':
                 echo "This would send the mail...";
+                $mtpl = $m->loadTemplate('mail_' . $form_type);
+                $action = $form_type;
+                require 'prep_mail.php';
+                $data['action'] = $action;
+                $mail_html = $mtpl->render($data);
+                echo '<hr/>'.$mail_html;
+
                 break;
             case 'event':
                 $tpl = $m->loadTemplate('event_html');
