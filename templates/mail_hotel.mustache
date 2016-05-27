@@ -1,3 +1,49 @@
-This is the Template for the {{action}} Mail!
+From: Fake Reservation System <{{user.email}}>
+To: {{user.name_first}} {{user.name_last}} <{{user.email}}>
+Subject: [FRS] {{action_uc}} Reservation
+Date: {{email_date}}
+X-Mailer: FRS/1.0
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
 
-{{reservationFor_name.value}}
+<html>
+<body>
+<p>
+<h1>YOUR RESERVATION DETAILS</h1>
+<p>
+<div itemscope itemtype="http://schema.org/LodgingReservation">
+  Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
+  <link itemprop="reservationStatus" href="{{reservationStatus.value}}"/>
+  <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+    Reserved for: <span itemprop="name">{{underName_name.value}}</span>, <span itemprop="email">{{underName_email.value}}</span><br/>
+  </div>
+  <div itemprop="reservationFor" itemscope itemtype="http://schema.org/LodgingBusiness">
+    Hotel: <span itemprop="name">{{reservationFor_name.value}}</span><br/>
+    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <meta itemprop="streetAddress" content="{{reservationFor_address_streetAddress.value}}"/>
+      <meta itemprop="addressLocality" content="{{reservationFor_address_addressLocality.value}}"/>
+      <meta itemprop="addressRegion" content="{{reservationFor_address.addressRegion.value}}"/>
+      <meta itemprop="postalCode" content="{{reservationFor_address_postalCode.value}}"/>
+      <meta itemprop="addressCountry" content="{{reservationFor_address_addressCountry.value}}"/>
+    </div>
+    Tel.: <span itemprop="telephone">{{reservationFor_telephone.value}}</span><br/>
+    <a itemprop="url" href="{{reservationFor_url.value}}">Homepage</a><br/>
+    <link itemprop="image" href="{{reservationFor_image.value}}"/>
+  </div>
+  Checkin: {{checkinDate.value}}<br/>
+  <meta itemprop="checkinDate" content="{{checkinDate.value}}"/>
+  Checkout: {{checkoutDate.value}}<br/>
+  <meta itemprop="checkoutDate" content="{{checkoutDate.value}}"/>
+  Number of persons: <span itemprop="numAdults">{{numAdults.value}}</span> adults, <span itemprop="numChildren">{{numChildren.value}}</span> children<br/>
+  Price: <span itemprop="price">{{price.value}}</span> <span itemprop="priceCurrency">{{priceCurrency.value}}</span><br/>
+  <br/>
+  Booked with:<br/>
+  <meta itemprop="bookingTime" content="{{bookingTime.value}}"/>
+  <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
+    <span itemprop="name">{{bookingAgent_name.value}}</span><br/>
+    <a itemprop="url" href="{{bookingAgent_url.value}}">{{bookingAgent_url.value}}</a><br/>
+  </div>
+</div>
+</p>
+</body>
+</html>
