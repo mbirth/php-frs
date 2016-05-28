@@ -43,4 +43,6 @@ if ($debug) {
     print_r($fields);
 }
 
+$data['email_date'] = date('r');
+
 $data = array_merge($data, $fields);

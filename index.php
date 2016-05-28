@@ -99,12 +99,33 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 echo "This would send the mail...";
                 $mtpl = $m->loadTemplate('mail_' . $form_type);
                 $action = $form_type;
-                require 'prep_mail.php';
                 $data['action'] = $action;
                 $data['action_uc'] = ucwords($action);
+                require 'prep_mail.php';
                 $mail_html = $mtpl->render($data);
-                echo '<hr/>'.$mail_html;
-
+                list($headers, $mailbody) = preg_split('/\r?\n\r?\n/', $mail_html, 2);
+                echo '<hr/>'.$headers.'<hr/>'.$mailbody;
+                $header_lines = preg_split('/\r?\n/', $headers);
+                $header_filtered = '';
+                $recipient = $data['user']['name_first'] . ' ' . $data['user']['name_last'] . ' <' . $data['user']['email'] . '>';
+                $subject = '[FRS] ' . $data['action_uc'] . ' Reservation';
+                foreach ($header_lines as $header_line) {
+                    list($key, $value) = preg_split('/: /', $header_line, 2);
+                    if (in_array(strtolower($key), array('subject', 'to'))) {
+                        // Skip Subject and To headers as they're added by PHP
+                        if (strtolower($key) == 'subject') {
+                            $subject = $value;
+                        }
+                        continue;
+                    }
+                    $header_filtered .= $header_line . "\r\n";
+                }
+                $mail_sent = mail($recipient, $subject, $mailbody, $header_filtered);
+                if ($mail_sent) {
+                    echo 'Mail sent successfully.';
+                } else {
+                    echo 'Mail sending failed!!';
+                }
                 break;
             case 'event':
                 $tpl = $m->loadTemplate('event_html');
