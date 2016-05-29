@@ -137,7 +137,13 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 $action = 'hotel';
                 require 'prep_form.php';
                 break;
-            default:
+            case 'restaurant':
+                $tpl = $m->loadTemplate('restaurant_html');
+                $tpl_done = true;
+                $action = 'restaurant';
+                require 'prep_form.php';
+                break;
+             default:
                 if (!$tpl_done) {
                     $tpl = $m->loadTemplate('loggedin_html');
                     $tpl_done = true;
