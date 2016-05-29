@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         xsel.addEventListener('change', checkValidity);
         var event = document.createEvent('HTMLEvents');
         event.initEvent('change', true, true);
-        console.log('Event is: %o', event);
         xsel.dispatchEvent(event);
     }
 });
