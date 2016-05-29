@@ -1,0 +1,258 @@
+{
+    "groups": {
+        "0": "Rental Information",
+        "pu": "Pickup Information",
+        "do": "Dropoff Information",
+        "2": "Booking Details",
+        "3": "Program Membership",
+        "4": "Booking Agency",
+        "5": "Hotlinks",
+        "6": "Metadata"
+    },
+    "fields": {
+        "bookingAgent_name": {
+            "title": "Name",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "bookingAgent_url": {
+            "title": "URL",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "bookingTime": {
+            "title": "Booking Date",
+            "type": "datetime",
+            "required": false,
+            "group": 4
+        },
+        "cancelReservationUrl": {
+            "title": "Cancel URL",
+            "type": "url",
+            "required": false,
+            "group": 5
+        },
+        "checkinUrl": {
+            "title": "Check in URL",
+            "type": "url",
+            "required": false,
+            "group": 5
+        },
+        "confirmReservationUrl": {
+            "title": "Confirm URL",
+            "type": "url",
+            "required": false,
+            "group": 5
+        },
+        "dropoffLocation_name": {
+            "title": "Dropoff Location Name",
+            "type": "text",
+            "required": true,
+            "group": "do"
+        },
+        "dropoffLocation_address_streetAddress": {
+            "title": "Street",
+            "type": "text",
+            "required": true,
+            "group": "do"
+        },
+        "dropoffLocation_address_postalCode": {
+            "title": "Zip Code",
+            "type": "number",
+            "required": true,
+            "group": "do",
+            "short": true
+        },
+        "dropoffLocation_address_addressLocality": {
+            "title": "City",
+            "type": "text",
+            "required": true,
+            "group": "do"
+        },
+        "dropoffLocation_address_addressRegion": {
+            "title": "Region",
+            "type": "text",
+            "required": true,
+            "group": "do",
+            "short": true
+        },
+        "dropoffLocation_address_addressCountry": {
+            "title": "Country",
+            "type": "country",
+            "required": true,
+            "group": "do"
+        },
+        "dropoffLocation_telephone": {
+            "title": "Telephone",
+            "type": "tel",
+            "required": false,
+            "group": "do",
+            "short": true
+        },
+        "dropoffTime": {
+            "title": "Dropoff Time",
+            "type": "datetime",
+            "required": true,
+            "group": "do"
+        },
+        "modifiedTime": {
+            "title": "Modified Time",
+            "type": "datetime",
+            "required": false,
+            "group": 6
+        },
+        "modifyReservationUrl": {
+            "title": "Modify URL",
+            "type": "url",
+            "required": false,
+            "group": 5
+        },
+        "pickupLocation_name": {
+            "title": "Pickup Location Name",
+            "type": "text",
+            "required": true,
+            "group": "pu"
+        },
+        "pickupLocation_address_streetAddress": {
+            "title": "Street",
+            "type": "text",
+            "required": true,
+            "group": "pu"
+        },
+        "pickupLocation_address_postalCode": {
+            "title": "Zip Code",
+            "type": "number",
+            "required": true,
+            "group": "pu",
+            "short": true
+        },
+        "pickupLocation_address_addressLocality": {
+            "title": "City",
+            "type": "text",
+            "required": true,
+            "group": "pu"
+        },
+        "pickupLocation_address_addressRegion": {
+            "title": "Region",
+            "type": "text",
+            "required": true,
+            "group": "pu",
+            "short": true
+        },
+        "pickupLocation_address_addressCountry": {
+            "title": "Country",
+            "type": "country",
+            "required": true,
+            "group": "pu"
+        },
+        "pickupLocation_telephone": {
+            "title": "Telephone",
+            "type": "tel",
+            "required": false,
+            "group": "pu",
+            "short": true
+        },
+        "pickupTime": {
+            "title": "Pickup Time",
+            "type": "datetime",
+            "required": true,
+            "group": "pu"
+        },
+        "potentialAction": {
+            "title": "Potential Action",
+            "type": "unknown",
+            "required": true,
+            "group": 5
+        },
+        "price": {
+            "title": "Price",
+            "type": "decimal",
+            "required": false,
+            "group": 2,
+            "short": true
+        },
+        "priceCurrency": {
+            "title": "Currency",
+            "type": "currency",
+            "required": false,
+            "group": 2,
+            "short": true
+        },
+        "programMembership_program": {
+            "title": "Name of Program",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "programMembership_memberNumber": {
+            "title": "Member No.",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "reservationFor_rentalCompany_name": {
+            "title": "Rental Company Name",
+            "type": "text",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_description": {
+            "title": "Car Description",
+            "type": "text",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_brand_name": {
+            "title": "Car Brand",
+            "type": "text",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_model": {
+            "title": "Car Model",
+            "type": "text",
+            "required": true,
+            "group": 0
+        },
+        "reservationNumber": {
+            "title": "Reservation #",
+            "type": "text",
+            "required": true,
+            "group": 2,
+            "short": true
+        },
+        "reservationStatus": {
+            "title": "Status",
+            "type": "status",
+            "required": true,
+            "group": 2,
+            "short": true
+        },
+        "underName_name": {
+            "title": "Name on Reservation",
+            "type": "text",
+            "required": true,
+            "group": 2,
+            "default": "USER_NAME"
+        },
+        "underName_email": {
+            "title": "Email address",
+            "type": "email",
+            "required": false,
+            "group": 2,
+            "default": "USER_EMAIL"
+        },
+        "url": {
+            "title": "Booking URL",
+            "type": "url",
+            "required": false,
+            "group": 5
+        }
+    }
+}
+

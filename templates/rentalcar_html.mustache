@@ -1,0 +1,35 @@
+{{> html_head}}
+{{> mdl_head}}
+{{> mdl_content_head}}
+
+<div class="frs-crumbs mdl-color-text--grey-500">
+  <a href="./">Fake Reservation System</a> &gt; Create Rental Car Reservation
+</div>
+
+<h3><i class="material-icons">directions_car</i> Rental Car Reservation</h3>
+
+<form action="./send" method="post">
+    <input type="hidden" name="form_type" value="{{action}}"/>
+
+{{#form_data}}
+<h4>{{group_name}}</h4>
+
+    {{#fields}}
+        {{>mdl_input}}
+    {{/fields}}
+
+{{/form_data}}
+
+<p>
+    <strong>The event will be sent to {{user.email}}.</strong>
+</p>
+
+<button id="frs-button-send" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i class="material-icons">send</i>
+</button>
+
+</form>
+<script src="./js/frs.js" charset="utf-8"></script>
+{{> mdl_content_foot}}
+{{> mdl_foot}}
+{{> html_foot}}
