@@ -1,3 +1,15 @@
+function checkValidity() {
+    if (this.required) {
+        var optId = this.selectedIndex;
+        var selOpt = this.options[optId];
+        if (selOpt.value == '') {
+            this.parentNode.classList.add('is-invalid');
+        } else {
+            this.parentNode.classList.remove('is-invalid');
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function(event) { 
     var all_selects = document.getElementsByTagName('select');
     for (var i in all_selects) {
@@ -14,5 +26,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 break;
             }
         }
+
+        // Add eventlistener to change is-invalid state and run once
+        xsel.addEventListener('change', checkValidity);
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, true);
+        console.log('Event is: %o', event);
+        xsel.dispatchEvent(event);
     }
 });
