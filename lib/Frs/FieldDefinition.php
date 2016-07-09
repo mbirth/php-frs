@@ -16,9 +16,12 @@ class FieldDefinition
         if (!file_exists($definitionFile)) {
             throw new \Exception('File ' . $definitionFile . ' not found!');
         }
-        $fieldDataJson  = file_get_contents($definitionFile);
-        /** @var array */
-        $this->fieldData = json_decode($fieldDataJson, true);
+        $fieldDataJson   = file_get_contents($definitionFile);
+        $fieldData       = json_decode($fieldDataJson, true);
+        if (!is_array($fieldData)) {
+            $fieldData = array($fieldData);
+        }
+        $this->fieldData = $fieldData;
     }
 
     public function getFieldData()
