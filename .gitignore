@@ -1,4 +1,5 @@
 /_devel_/
+/js/*.js
 
 # Composer stuff
 /auth.json
