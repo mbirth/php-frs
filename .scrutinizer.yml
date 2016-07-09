@@ -131,6 +131,8 @@ build:
         before:
             - sudo composer selfupdate
             - composer global require "fxp/composer-asset-plugin:~1.1"
+        after:
+            - make all
     tests:
         override:
             -
