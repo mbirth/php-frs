@@ -4,34 +4,14 @@
     "require": {
         "php": ">=5.3.0",
         "mustache/mustache": "~2.10",
-        "google/material-design-lite": "~1.1.3",
-        "google/apiclient": "^2.0.0@RC",
-        "leifoolsen/mdl-ext": "~0.8.12"
+        "bower-asset/material-design-lite": "*",
+        "npm-asset/mdl-ext": "*",
+        "google/apiclient": "^2.0.0@RC"
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "google/material-design-lite",
-                "version": "1.1.3",
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/google/material-design-lite",
-                    "reference": "v1.1.3"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "leifoolsen/mdl-ext",
-                "version": "0.8.12",
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/leifoolsen/mdl-ext",
-                    "reference": "v0.8.12"
-                }
-            }
-        }
-    ]
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "classmap": ["lib/"]
+    }
 }
