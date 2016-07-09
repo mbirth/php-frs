@@ -48,6 +48,38 @@ class FieldDefinition
     }
 
     /**
+     * Adds useful interpretations of $field['value'] if available.
+     *
+     * @param mixed[] &$field Field to enrich
+     */
+    private function addValueTranslations(&$field)
+    {
+        if (!isset($field['value'])) {
+            return;
+        }
+        switch ($field['type']) {
+            case 'datetime':
+                $field['value_unixtime'] = strtotime($field['value']);
+                break;
+        }
+    }
+
+    /**
+     * Adds useful default values for some $field['type']s.
+     *
+     * @param mixed[] &$field Field to enrich
+     */
+    private function addSupportValues(&$field)
+    {
+        switch ($field['type']) {
+            case 'datetime':
+                $field['min']   = date('Y-m-d');
+                $field['today'] = date('Y-m-d');
+                break;
+        }
+    }
+
+    /**
      * Adds the given $values or default values and replaces $placeholders. Also
      * adds some helping attributes to fields.
      *
@@ -64,13 +96,7 @@ class FieldDefinition
             // Assign session value if set, or use default if set
             if (isset($values[$key])) {
                 $meta['value'] = $values[$key];
-
-                switch ($meta['type']) {
-                    case 'datetime':
-                        $meta['value_unixtime'] = strtotime($meta['value']);
-                        break;
-                }
-
+                $this->addValueTranslations($meta);
             } elseif (isset($meta['default'])) {
                 if (isset($placeholders[$meta['default']])) {
                     $meta['value'] = $placeholders[$meta['default']];
@@ -82,13 +108,7 @@ class FieldDefinition
             // Field type marker for Mustache
             $meta['fieldtype_' . $meta['type']] = true;
 
-            // Add useful default values for some types
-            switch ($meta['type']) {
-                case 'datetime':
-                    $meta['min'] = date('Y-m-d');
-                    $meta['today'] = date('Y-m-d');
-                    break;
-            }
+            $this->addSupportValues($meta);
 
             // Add to fieldlist
             $this->fieldData['fields'][$key] = $meta;
