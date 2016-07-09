@@ -9,7 +9,9 @@ $m = new Mustache_Engine(array(
     'logger' => new Mustache_Logger_StreamLogger('php://stderr'),
 ));
 
-$data = array();
+$data = array(
+    'session_time_left' => 0,
+);
 
 $client = new Google_Client();
 $client->setAuthConfigFile('client_secret.json');
