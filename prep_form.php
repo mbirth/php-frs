@@ -1,5 +1,7 @@
 <?php
 
+use \Frs\FieldDefinition;
+
 // FOR TESTING:
 if (!isset($action)) {
     $action = 'hotel';
@@ -7,16 +9,9 @@ if (!isset($action)) {
 }
 $skey   = 'form_' . $action;
 
-$field_data_json = file_get_contents('definitions/' . $action . '.json');
-$field_data = json_decode($field_data_json, true);
-
-// Build Group list
-foreach ($field_data['groups'] as $id=>$group) {
-    $by_group[$group] = array(
-        'group_name' => $group,
-        'fields' => array(),
-    );
-}
+$fd = new FieldDefinition($action);
+$field_data = $fd->getFieldData();
+$by_group = $fd->getGroups();
 
 // Assign fields to groups, fill in (default) values
 foreach ($field_data['fields'] as $key=>$meta) {

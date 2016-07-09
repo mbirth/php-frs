@@ -1,5 +1,6 @@
 /_devel_/
 /js/*.js
+/clover.xml
 
 # Composer stuff
 /auth.json
