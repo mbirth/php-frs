@@ -1,13 +1,18 @@
 #!/bin/sh
 # https://getcomposer.org/
-if [ -x `which wget` ]; then
-    echo "wget found."
-    wget -q https://getcomposer.org/installer -O - | php
-elif [ -x `which curl` ]; then
-    echo "curl found."
-    curl -sS https://getcomposer.org/installer | php
+EXPECTED_SIGNATURE=$(wget https://composer.github.io/installer.sig -O - -q)
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
+
+if [ "$EXPECTED_SIGNATURE" = "$ACTUAL_SIGNATURE" ]; then
+    php composer-setup.php --quiet
+    RESULT=$?
+    rm composer-setup.php
+    exit $RESULT
 else
-    echo "Please install wget or curl to download Composer."
+    >&2 echo 'ERROR: Invalid installer signature'
+    rm composer-setup.php
+    exit 1
 fi
 
 if [ -f "./composer.phar" ]; then
