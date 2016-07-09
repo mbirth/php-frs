@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/vendor' . '/autoload.php';
 
+use \Frs\FieldDefinition;
+
 $m = new Mustache_Engine(array(
     'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/templates'),
     'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/templates/partials'),
@@ -101,9 +103,18 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 echo "This would send the mail...";
                 $mtpl = $m->loadTemplate('mail_' . $form_type);
                 $action = $form_type;
+                $skey = 'form_' . $action;
                 $data['action'] = $action;
                 $data['action_uc'] = ucwords($action);
-                require 'prep_mail.php';
+
+                $fd = new FieldDefinition($action);
+                $fd->addFieldValues($_SESSION[$skey]);
+                $fieldData = $fd->getFieldData();
+                $fields = $fieldData['fields'];
+
+                $data['email_date'] = date('r');
+                $data = array_merge($data, $fields);
+
                 $mail_html = $mtpl->render($data);
                 list($headers, $mailbody) = preg_split('/\r?\n\r?\n/', $mail_html, 2);
                 echo '<hr/>'.$headers.'<hr/>'.$mailbody;
