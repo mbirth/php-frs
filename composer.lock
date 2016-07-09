@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b24a0007ade6b73266663de233c8dd86",
-    "content-hash": "61659d06b06498fbcab8c3ba1b5e4c99",
+    "hash": "c16fe5d634e2d6392c87fbf9c4d05519",
+    "content-hash": "59fa10158328c7f6a6432c72fc6fb721",
     "packages": [
         {
             "name": "bower-asset/material-design-lite",
@@ -941,6 +941,65 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "npm-asset/coffee-script",
+            "version": "1.10.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.10.0.tgz",
+                "reference": null,
+                "shasum": "12938bcf9be1948fa006f92e0c4c9e81705108c0"
+            },
+            "require-dev": {
+                "npm-asset/docco": "~0.7.0",
+                "npm-asset/highlight.js": "~8.0.0",
+                "npm-asset/jison": ">=0.2.0",
+                "npm-asset/uglify-js": "~2.2",
+                "npm-asset/underscore": "~1.5.2"
+            },
+            "bin": {
+                "coffee": "./bin/coffee",
+                "cake": "./bin/cake"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/jashkenas/coffeescript/issues"
+                },
+                "npm-asset-main": "./lib/coffee-script/coffee-script",
+                "npm-asset-directories": {
+                    "lib": "./lib/coffee-script"
+                },
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git://github.com/jashkenas/coffeescript.git"
+                },
+                "npm-asset-scripts": {
+                    "test": "node ./bin/cake test",
+                    "test-harmony": "node --harmony ./bin/cake test"
+                },
+                "npm-asset-engines": {
+                    "node": ">=0.8.0"
+                },
+                "npm-asset-prefer-global": true
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Ashkenas"
+                }
+            ],
+            "description": "Unfancy JavaScript",
+            "homepage": "http://coffeescript.org",
+            "keywords": [
+                "coffeescript",
+                "compiler",
+                "javascript",
+                "language"
+            ]
         },
         {
             "name": "phpdocumentor/reflection-common",
