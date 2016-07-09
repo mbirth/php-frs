@@ -17,6 +17,7 @@ class FieldDefinition
             throw new \Exception('File ' . $definitionFile . ' not found!');
         }
         $fieldDataJson  = file_get_contents($definitionFile);
+        /** @var array */
         $this->fieldData = json_decode($fieldDataJson, true);
     }
 
