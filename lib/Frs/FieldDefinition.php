@@ -4,7 +4,7 @@ namespace Frs;
 
 class FieldDefinition
 {
-    private $field_data = array();
+    private $fieldData = array();
 
     /**
      * @param string $type Type of FieldDefinition (hotel, car, etc.)
@@ -12,28 +12,28 @@ class FieldDefinition
      */
     public function __construct($type)
     {
-        $definition_file = 'definitions/' . $type . '.json';
-        if (!file_exists($definition_file)) {
-            throw new \Exception('File ' . $definition_file . ' not found!');
+        $definitionFile = 'definitions/' . $type . '.json';
+        if (!file_exists($definitionFile)) {
+            throw new \Exception('File ' . $definitionFile . ' not found!');
         }
-        $field_data_json  = file_get_contents($definition_file);
-        $this->field_data = json_decode($field_data_json, true);
+        $fieldDataJson  = file_get_contents($definitionFile);
+        $this->fieldData = json_decode($fieldDataJson, true);
     }
 
     public function getFieldData()
     {
-        return $this->field_data;
+        return $this->fieldData;
     }
 
     public function getGroups()
     {
-        $by_group = array();
-        foreach ($this->field_data['groups'] as $id=>$group) {
-            $by_group[$group] = array(
+        $byGroup = array();
+        foreach ($this->fieldData['groups'] as $id=>$group) {
+            $byGroup[$group] = array(
                 'group_name' => $group,
                 'fields'     => array(),
             );
         }
-        return $by_group;
+        return $byGroup;
     }
 }
