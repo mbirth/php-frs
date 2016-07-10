@@ -34,8 +34,8 @@ class FieldDefinitionTest extends \PHPUnit_Framework_TestCase
     public function testAddFieldValues()
     {
         $fdo = new FieldDefinition('hotel');
-        $fdo->addPlaceholder('USER_NAME', 'John Doe');
-        $fdo->addFieldValues(array('url'=>'http://example.org/'));
+        $fdo->setPlaceholder('USER_NAME', 'John Doe');
+        $fdo->setFieldValues(array('url'=>'http://example.org/'));
         $fd = $fdo->getFieldData();
         $this->assertArrayHasKey('fields', $fd);
         $this->assertArrayHasKey('url', $fd['fields']);
@@ -47,7 +47,7 @@ class FieldDefinitionTest extends \PHPUnit_Framework_TestCase
     public function testSupportValues()
     {
         $fdo = new FieldDefinition('hotel');
-        $fdo->addFieldValues(array('modifiedTime'=>'2016-01-01 01:01:01'));
+        $fdo->setFieldValues(array('modifiedTime'=>'2016-01-01 01:01:01'));
         $fd = $fdo->getFieldData();
         $this->assertArrayHasKey('today', $fd['fields']['modifiedTime']);
         $this->assertEquals(date('Y-m-d'), $fd['fields']['modifiedTime']['today']);
@@ -57,7 +57,7 @@ class FieldDefinitionTest extends \PHPUnit_Framework_TestCase
     {
         ini_set('date.timezone', 'Europe/Berlin');
         $fdo = new FieldDefinition('hotel');
-        $fdo->addFieldValues(array('modifiedTime'=>'2016-01-01 01:01:01'));
+        $fdo->setFieldValues(array('modifiedTime'=>'2016-01-01 01:01:01'));
         $fd = $fdo->getFieldData();
         $this->assertArrayHasKey('value_unixtime', $fd['fields']['modifiedTime']);
         $this->assertEquals(1451606461, $fd['fields']['modifiedTime']['value_unixtime']);

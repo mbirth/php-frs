@@ -33,12 +33,12 @@ class GenericOutput
         $this->template = $this->templateEngine->loadTemplate($templateName);
     }
 
-    public function addTemplateVar($key, $value)
+    public function setTemplateVar($key, $value)
     {
         $this->templateVars[$key] = $value;
     }
 
-    public function addTemplateVars($tplVars)
+    public function setTemplateVars($tplVars)
     {
         // maybe use array_merge_recursive one day... but currently I think this is better
         $this->templateVars = array_merge($this->templateVars, $tplVars);

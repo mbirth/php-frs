@@ -124,17 +124,22 @@ class FieldDefinition
     }
 
     /**
-     * Adds a placeholder token and the desired replacement value.
+     * Sets a placeholder token and the desired replacement value.
      *
      * @param string $placeholder Placeholder, e.g. USER_NAME
      * @param string $replacement Replacement value, e.g. John Doe
      */
-    public function addPlaceholder($placeholder, $replacement)
+    public function setPlaceholder($placeholder, $replacement)
     {
         $this->placeholders[$placeholder] = $replacement;
     }
 
-    public function addPlaceholders($placeholders)
+    /**
+     * Sets multiple placeholders and their values.
+     *
+     * @param array $placeholders Associative array of placeholders and values
+     */
+    public function setPlaceholders($placeholders)
     {
         $this->placeholders = array_merge($this->placeholders, $placeholders);
     }
@@ -150,12 +155,11 @@ class FieldDefinition
     }
 
     /**
-     * Adds the given $values or default values and replaces $placeholders. Also
-     * adds some helping attributes to fields.
+     * Sets the given $values for the given fields.
      *
      * @param mixed[] Key-value-array of values (value) to assign to fields (key)
      */
-    public function addFieldValues($values = array())
+    public function setFieldValues($values = array())
     {
         foreach ($this->fieldData['fields'] as $key=>$meta) {
             // Assign session value if set, or use default if set

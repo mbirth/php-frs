@@ -106,13 +106,13 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 $data['action_uc'] = ucwords($action);
 
                 $fd = new FieldDefinition($action);
-                $fd->addFieldValues($_SESSION[$skey]);
+                $fd->setFieldValues($_SESSION[$skey]);
                 $fieldData = $fd->getFieldData();
                 $fields = $fieldData['fields'];
 
                 $data['email_date'] = date('r');
                 $data = array_merge($data, $fields);
-                $mo->addTemplateVars($data);
+                $mo->setTemplateVars($data);
                 $mo->setSubject('[FRS] ' . $data['action_uc'] . ' Reservation');
                 $mo->addRecipient($data['user']['email'], $data['user']['name_first'] . ' ' . $data['user']['name_last']);
                 $mail_sent = $mo->send();
@@ -144,7 +144,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 $action = 'rentalcar';
                 require 'prep_form.php';
                 break;
-              default:
+            default:
                 if (!$tpl_done) {
                     $ho->setTemplate('loggedin_html');
                     $tpl_done = true;
@@ -160,5 +160,5 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
 $data['action'] = $_GET['action'];
 
-$ho->addTemplateVars($data);
+$ho->setTemplateVars($data);
 $ho->sendOutputToStdout();
