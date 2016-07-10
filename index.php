@@ -46,7 +46,7 @@ $tpl_done = false;
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'faq':
-            $tpl = $ho->setTemplate('faq_html');
+            $ho->setTemplate('faq_html');
             $tpl_done = true;
             break;
         case 'send':
@@ -92,7 +92,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
     // Check $userdata->verifiedEmail and deny if not verified.
     if (!$userdata->verifiedEmail) {
-        $tpl = $ho->setTemplate('notverified_html');
+        $ho->setTemplate('notverified_html');
         $tpl_done = true;
     } else {
         switch ($_GET['action']) {
@@ -141,30 +141,30 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 }
                 break;
             case 'event':
-                $tpl = $ho->setTemplate('event_html');
+                $ho->setTemplate('event_html');
                 $tpl_done = true;
                 break;
             case 'hotel':
-                $tpl = $ho->setTemplate('hotel_html');
+                $ho->setTemplate('hotel_html');
                 $tpl_done = true;
                 $action = 'hotel';
                 require 'prep_form.php';
                 break;
             case 'restaurant':
-                $tpl = $ho->setTemplate('restaurant_html');
+                $ho->setTemplate('restaurant_html');
                 $tpl_done = true;
                 $action = 'restaurant';
                 require 'prep_form.php';
                 break;
             case 'rentalcar':
-                $tpl = $ho->setTemplate('rentalcar_html');
+                $ho->setTemplate('rentalcar_html');
                 $tpl_done = true;
                 $action = 'rentalcar';
                 require 'prep_form.php';
                 break;
               default:
                 if (!$tpl_done) {
-                    $tpl = $ho->setTemplate('loggedin_html');
+                    $ho->setTemplate('loggedin_html');
                     $tpl_done = true;
                 }
                 break;
@@ -173,7 +173,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 } elseif (!$tpl_done) {
     // Not authenticated
     $data['auth_url'] = $client->createAuthUrl();
-    $tpl = $ho->setTemplate('index_html');
+    $ho->setTemplate('index_html');
 }
 
 $data['action'] = $_GET['action'];
