@@ -4,15 +4,18 @@ namespace Frs;
 
 class FieldDefinition
 {
+    private $definitionsPrefix;
     private $fieldData = array();
 
     /**
      * @param string $type Type of FieldDefinition (hotel, car, etc.)
+     * @param string $definitionsPrefix Prefix for definition files. If it's a directory, has to end with slash!
      * @throws \Exception if no definition file for this $type is found
      */
-    public function __construct($type)
+    public function __construct($type, $definitionsPrefix = 'definitions/')
     {
-        $definitionFile = 'definitions/' . $type . '.json';
+        $this->definitionsPrefix = $definitionsPrefix;
+        $definitionFile = $this->definitionsPrefix . $type . '.json';
         if (!file_exists($definitionFile)) {
             throw new \Exception('File ' . $definitionFile . ' not found!');
         }
