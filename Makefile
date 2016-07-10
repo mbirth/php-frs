@@ -10,7 +10,7 @@ all: coffee
 coffee: $(JS_FILES)
 
 $(SCRIPT_DIR)/%.js: $(SCRIPT_DIR)/%.coffee
-	$(CC) -c $<
+	"$(CC)" -c $<
 
 
 
