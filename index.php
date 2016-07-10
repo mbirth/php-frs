@@ -3,13 +3,10 @@
 require_once __DIR__ . '/vendor' . '/autoload.php';
 
 use \Frs\FieldDefinition;
+use \Frs\Output\HtmlOutput;
+use \Frs\Output\MailOutput;
 
-$m = new Mustache_Engine(array(
-    'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/templates'),
-    'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/templates/partials'),
-    'charset' => 'utf-8',
-    'logger' => new Mustache_Logger_StreamLogger('php://stderr'),
-));
+$ho = new HtmlOutput(dirname(__FILE__) . '/templates');
 
 $data = array(
     'session_time_left' => 0,
@@ -49,7 +46,7 @@ $tpl_done = false;
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'faq':
-            $tpl = $m->loadTemplate('faq_html');
+            $tpl = $ho->setTemplate('faq_html');
             $tpl_done = true;
             break;
         case 'send':
@@ -95,13 +92,14 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
     // Check $userdata->verifiedEmail and deny if not verified.
     if (!$userdata->verifiedEmail) {
-        $tpl = $m->loadTemplate('notverified_html');
+        $tpl = $ho->setTemplate('notverified_html');
         $tpl_done = true;
     } else {
         switch ($_GET['action']) {
             case 'send':
                 echo "This would send the mail...";
-                $mtpl = $m->loadTemplate('mail_' . $form_type);
+                $mo = new MailOutput(dirname(__FILE__) . '/templates');
+                $mo->setTemplate('mail_' . $form_type);
                 $action = $form_type;
                 $skey = 'form_' . $action;
                 $data['action'] = $action;
@@ -114,9 +112,11 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
                 $data['email_date'] = date('r');
                 $data = array_merge($data, $fields);
+                $mo->setTemplateVars($data);
 
-                $mail_html = $mtpl->render($data);
+                $mail_html = $mo->getRenderedOutput();
                 list($headers, $mailbody) = preg_split('/\r?\n\r?\n/', $mail_html, 2);
+
                 echo '<hr/>'.$headers.'<hr/>'.$mailbody;
                 $header_lines = preg_split('/\r?\n/', $headers);
                 $header_filtered = '';
@@ -141,30 +141,30 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 }
                 break;
             case 'event':
-                $tpl = $m->loadTemplate('event_html');
+                $tpl = $ho->setTemplate('event_html');
                 $tpl_done = true;
                 break;
             case 'hotel':
-                $tpl = $m->loadTemplate('hotel_html');
+                $tpl = $ho->setTemplate('hotel_html');
                 $tpl_done = true;
                 $action = 'hotel';
                 require 'prep_form.php';
                 break;
             case 'restaurant':
-                $tpl = $m->loadTemplate('restaurant_html');
+                $tpl = $ho->setTemplate('restaurant_html');
                 $tpl_done = true;
                 $action = 'restaurant';
                 require 'prep_form.php';
                 break;
             case 'rentalcar':
-                $tpl = $m->loadTemplate('rentalcar_html');
+                $tpl = $ho->setTemplate('rentalcar_html');
                 $tpl_done = true;
                 $action = 'rentalcar';
                 require 'prep_form.php';
                 break;
               default:
                 if (!$tpl_done) {
-                    $tpl = $m->loadTemplate('loggedin_html');
+                    $tpl = $ho->setTemplate('loggedin_html');
                     $tpl_done = true;
                 }
                 break;
@@ -173,8 +173,10 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 } elseif (!$tpl_done) {
     // Not authenticated
     $data['auth_url'] = $client->createAuthUrl();
-    $tpl = $m->loadTemplate('index_html');
+    $tpl = $ho->setTemplate('index_html');
 }
 
 $data['action'] = $_GET['action'];
-echo $tpl->render($data);
+
+$ho->addTemplateVars($data);
+$ho->sendOutputToStdout();
