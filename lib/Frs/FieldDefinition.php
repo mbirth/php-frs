@@ -72,7 +72,7 @@ class FieldDefinition
     }
 
     /**
-     * Adds useful default values for some $field['type']s.
+     * Adds useful support values for some $field['type']s.
      *
      * @param mixed[] &$field Field to enrich
      */
@@ -86,6 +86,23 @@ class FieldDefinition
         }
     }
 
+    /**
+     * Sets the value of empty fields to the default value (if given)
+     * or an empty string, if no value was set.
+     *
+     * @param mixed[] &$field Field to work on
+     */
+    private function addDefaultOrEmpty(&$field)
+    {
+        if (!isset($field['value']) || empty($field['value'])) {
+            if (isset($field['default'])) {
+                $field['value'] = $field['default'];
+            } else {
+                $field['value'] = '';
+            }
+        }
+    }
+
     private function prepareFields()
     {
         foreach ($this->fieldData['fields'] as $key=>$meta) {
@@ -93,13 +110,7 @@ class FieldDefinition
             $groupName          = $this->fieldData['groups'][$meta['group']];
             $meta['group_name'] = $groupName;
 
-            if (!isset($meta['value']) || empty($meta['value'])) {
-                if (isset($meta['default'])) {
-                    $meta['value'] = $meta['default'];
-                } else {
-                    $meta['value'] = '';
-                }
-            }
+            $this->addDefaultOrEmpty($meta);
 
             // Field type marker for Mustache
             $meta['fieldtype_' . $meta['type']] = true;
