@@ -6,6 +6,7 @@ class FieldDefinition
 {
     private $definitionsPrefix;
     private $fieldData = array();
+    private $placeholders = array();
 
     /**
      * @param string $type Type of FieldDefinition (hotel, car, etc.)
@@ -25,15 +26,18 @@ class FieldDefinition
             $fieldData = array($fieldData);
         }
         $this->fieldData = $fieldData;
+        $this->prepareFields();
     }
 
     public function getFieldData()
     {
+        $this->processPlaceholders();
         return $this->fieldData;
     }
 
     public function getGroups()
     {
+        $this->processPlaceholders();
         $byGroup = array();
         foreach ($this->fieldData['groups'] as $id=>$group) {
             $byGroup[$group] = array(
@@ -82,34 +86,68 @@ class FieldDefinition
         }
     }
 
-    /**
-     * Adds the given $values or default values and replaces $placeholders. Also
-     * adds some helping attributes to fields.
-     *
-     * @param mixed[] Key-value-array of values (value) to assign to fields (key)
-     * @param string[] Key-value-array of values (value) to replace placeholders (key) with
-     */
-    public function addFieldValues($values = array(), $placeholders = array())
+    private function prepareFields()
     {
         foreach ($this->fieldData['fields'] as $key=>$meta) {
             $meta['field_id']   = $key;
             $groupName          = $this->fieldData['groups'][$meta['group']];
             $meta['group_name'] = $groupName;
 
-            // Assign session value if set, or use default if set
-            if (isset($values[$key])) {
-                $meta['value'] = $values[$key];
-                $this->addValueTranslations($meta);
-            } elseif (isset($meta['default'])) {
-                if (isset($placeholders[$meta['default']])) {
-                    $meta['value'] = $placeholders[$meta['default']];
-                } else {
-                    $meta['value'] = $meta['default'];
-                }
+            if (isset($meta['default']) && (!isset($meta['value']) || empty($meta['value']))) {
+                $meta['value'] = $meta['default'];
             }
 
             // Field type marker for Mustache
             $meta['fieldtype_' . $meta['type']] = true;
+
+            $this->addValueTranslations($meta);
+            $this->addSupportValues($meta);
+
+            // Add to fieldlist
+            $this->fieldData['fields'][$key] = $meta;
+        }
+    }
+
+    /**
+     * Adds a placeholder token and the desired replacement value.
+     *
+     * @param string $placeholder Placeholder, e.g. USER_NAME
+     * @param string $replacement Replacement value, e.g. John Doe
+     */
+    public function addPlaceholder($placeholder, $replacement)
+    {
+        $this->placeholders[$placeholder] = $replacement;
+    }
+
+    public function addPlaceholders($placeholders)
+    {
+        $this->placeholders = array_merge($this->placeholders, $placeholders);
+    }
+
+    public function processPlaceholders()
+    {
+        foreach ($this->fieldData['fields'] as $key=>$meta) {
+            if (isset($this->placeholders[$meta['value']])) {
+                $meta['value'] = $this->placeholders[$meta['value']];
+            }
+            $this->fieldData['fields'][$key] = $meta;
+        }
+    }
+
+    /**
+     * Adds the given $values or default values and replaces $placeholders. Also
+     * adds some helping attributes to fields.
+     *
+     * @param mixed[] Key-value-array of values (value) to assign to fields (key)
+     */
+    public function addFieldValues($values = array())
+    {
+        foreach ($this->fieldData['fields'] as $key=>$meta) {
+            // Assign session value if set, or use default if set
+            if (isset($values[$key])) {
+                $meta['value'] = $values[$key];
+                $this->addValueTranslations($meta);
+            }
 
             $this->addSupportValues($meta);
 

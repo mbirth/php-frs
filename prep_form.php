@@ -15,8 +15,8 @@ $placeholders = array(
     'USER_NAME'  => $data['user']['name_first'] . ' ' . $data['user']['name_last'],
     'USER_EMAIL' => $data['user']['email'],
 );
-
-$fd->addFieldValues($_SESSION[$skey], $placeholders);
+$fd->addPlaceholders($placeholders);
+$fd->addFieldValues($_SESSION[$skey]);
 
 $by_group = $fd->getGroups();
 
