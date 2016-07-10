@@ -70,7 +70,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
     $client->setAccessToken($_SESSION['access_token']);
     if ($client->isAccessTokenExpired()) {
         // TODO: Redirect to $client->createAuthUrl(); to reauthenticate
-        echo "Token expired! <a href=\"" . $client->createAuthUrl() . "\">Request new one</a>.";
+        echo 'Token expired! <a href="' . $client->createAuthUrl() . '">Request new one</a>.';
         #session_destroy();
         die();
     }
@@ -97,7 +97,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
     } else {
         switch ($_GET['action']) {
             case 'send':
-                echo "This would send the mail...";
+                echo 'This would send the mail...';
                 $mo = new MailOutput(dirname(__FILE__) . '/templates');
                 $mo->setTemplate('mail_' . $form_type);
                 $action = $form_type;
@@ -112,7 +112,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
 
                 $data['email_date'] = date('r');
                 $data = array_merge($data, $fields);
-                $mo->setTemplateVars($data);
+                $mo->addTemplateVars($data);
 
                 $mail_html = $mo->getRenderedOutput();
                 list($headers, $mailbody) = preg_split('/\r?\n\r?\n/', $mail_html, 2);
