@@ -93,8 +93,12 @@ class FieldDefinition
             $groupName          = $this->fieldData['groups'][$meta['group']];
             $meta['group_name'] = $groupName;
 
-            if (isset($meta['default']) && (!isset($meta['value']) || empty($meta['value']))) {
-                $meta['value'] = $meta['default'];
+            if (!isset($meta['value']) || empty($meta['value'])) {
+                if (isset($meta['default'])) {
+                    $meta['value'] = $meta['default'];
+                } else {
+                    $meta['value'] = '';
+                }
             }
 
             // Field type marker for Mustache

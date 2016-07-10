@@ -34,7 +34,8 @@ class FieldDefinitionTest extends \PHPUnit_Framework_TestCase
     public function testAddFieldValues()
     {
         $fdo = new FieldDefinition('hotel');
-        $fdo->addFieldValues(array('url'=>'http://example.org/'), array('USER_NAME'=>'John Doe'));
+        $fdo->addPlaceholder('USER_NAME', 'John Doe');
+        $fdo->addFieldValues(array('url'=>'http://example.org/'));
         $fd = $fdo->getFieldData();
         $this->assertArrayHasKey('fields', $fd);
         $this->assertArrayHasKey('url', $fd['fields']);
