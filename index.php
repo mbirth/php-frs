@@ -126,7 +126,13 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                 $ho->setTemplate('event_html');
                 $tpl_done = true;
                 break;
-            case 'hotel':
+            case 'flight':
+                $ho->setTemplate('flight_html');
+                $tpl_done = true;
+                $action = 'flight';
+                require 'prep_form.php';
+                break;
+             case 'hotel':
                 $ho->setTemplate('hotel_html');
                 $tpl_done = true;
                 $action = 'hotel';

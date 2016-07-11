@@ -1,0 +1,256 @@
+{
+    "groups": {
+        "0": "Flight Information",
+        "1": "Date",
+        "2": "Departure",
+        "3": "Arrival",
+        "4": "Boarding Pass",
+        "5": "Booking Information",
+        "6": "Program Membership",
+        "7": "Booking Agency",
+        "8": "Hotlinks",
+        "9": "Metadata"
+    },
+    "fields": {
+        "additionalTicketText": {
+            "title": "Additional information about boarding pass",
+            "type": "text",
+            "required": false,
+            "group": 4
+        },
+        "airplaneSeat": {
+            "title": "Seat",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "airplaneSeatClass_name": {
+            "title": "Seat Class",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "boardingGroup": {
+            "title": "Boarding group",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "bookingAgent_name": {
+            "title": "Name",
+            "type": "text",
+            "required": false,
+            "group": 7,
+            "short": true
+        },
+        "bookingAgent_url": {
+            "title": "URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "bookingTime": {
+            "title": "Booking Date",
+            "type": "datetime",
+            "required": false,
+            "group": 7
+        },
+        "modifiedTime": {
+            "title": "Modified Time",
+            "type": "datetime",
+            "required": false,
+            "group": 9
+        },
+        "programMembership_program": {
+            "title": "Name of Program",
+            "type": "text",
+            "required": false,
+            "group": 6,
+            "short": true
+        },
+        "programMembership_memberNumber": {
+            "title": "Member No.",
+            "type": "text",
+            "required": false,
+            "group": 6,
+            "short": true
+        },
+        "reservationFor_airline_iataCode": {
+            "title": "Airline IATA Code",
+            "type": "text",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_airline_name": {
+            "title": "Airline Name",
+            "type": "text",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_arrivalAirport_iataCode": {
+            "title": "Arrival Airport IATA Code",
+            "type": "text",
+            "required": true,
+            "group": 3,
+            "short": true
+        },
+        "reservationFor_arrivalAirport_name": {
+            "title": "Arrival Airport Name",
+            "type": "text",
+            "required": true,
+            "group": 3,
+            "short": true
+        },
+        "reservationFor_arrivalGate": {
+            "title": "Arrival Gate",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "reservationFor_arrivalTerminal": {
+            "title": "Arrival Terminal",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "reservationFor_arrivalTime": {
+            "title": "Arrival Time",
+            "type": "datetime",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_boardingTime": {
+            "title": "Boarding Time",
+            "type": "datetime",
+            "required": false,
+            "group": 1
+        },
+        "reservationFor_departureAirport_iataCode": {
+            "title": "Departure Airport IATA Code",
+            "type": "text",
+            "required": true,
+            "group": 2,
+            "short": true
+        },
+        "reservationFor_departureAirport_name": {
+            "title": "Departure Airport Name",
+            "type": "text",
+            "required": true,
+            "group": 2,
+            "short": true
+        },
+        "reservationFor_departureGate": {
+            "title": "Departure Gate",
+            "type": "text",
+            "required": false,
+            "group": 2,
+            "short": true
+        },
+        "reservationFor_departureTerminal": {
+            "title": "Departure Terminal",
+            "type": "text",
+            "required": false,
+            "group": 2,
+            "short": true
+        },
+        "reservationFor_departureTime": {
+            "title": "Departure Time",
+            "type": "datetime",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_flightNumber": {
+            "title": "Flight Number",
+            "type": "text",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_operatedBy_iataCode": {
+            "title": "Operating Airline IATA Code",
+            "type": "text",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_operatedBy_name": {
+            "title": "Operating Airline Name",
+            "type": "text",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_webCheckinTime": {
+            "title": "Earliest Time for Web Checkin",
+            "type": "datetime",
+            "required": false,
+            "group": 1
+        },
+        "reservationNumber": {
+            "title": "Reservation #",
+            "type": "text",
+            "required": true,
+            "group": 5,
+            "short": true
+        },
+        "reservationStatus": {
+            "title": "Status",
+            "type": "status",
+            "required": true,
+            "group": 5,
+            "short": true
+        },
+        "ticketDownloadUrl": {
+            "title": "Boarding Pass Download URL",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "ticketNumber": {
+            "title": "Ticket ID",
+            "type": "text",
+            "required": false,
+            "group": 4
+        },
+        "ticketPrintUrl": {
+            "title": "URL to print Boarding Pass",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "ticketToken": {
+            "title": "Ticket Barcode",
+            "type": "barcode",
+            "required": false,
+            "group": 4
+        },
+        "underName_name": {
+            "title": "Name on Reservation",
+            "type": "text",
+            "required": true,
+            "group": 5,
+            "default": "USER_NAME"
+        },
+        "underName_email": {
+            "title": "Email address",
+            "type": "email",
+            "required": false,
+            "group": 5,
+            "default": "USER_EMAIL"
+        },
+        "url": {
+            "title": "Booking URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        }
+    }
+}
+
