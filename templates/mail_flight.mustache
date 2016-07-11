@@ -1,0 +1,71 @@
+From: Fake Reservation System <{{user.email}}>
+Subject: [FRS] {{action_uc}} Reservation
+Date: {{email_date}}
+X-Mailer: FRS/1.0
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+<p>
+<h1>YOUR RESERVATION DETAILS</h1>
+<p>
+<div itemscope itemtype="http://schema.org/FlightReservation">
+    Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
+  <link itemprop="reservationStatus" href="{{reservationStatus.value}}"/>
+  <link itemprop="url" href="{{url.value}}"/>
+  <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{underName_name.value}}"/>
+      <meta itemprop="email" content="{{underName_email.value}}"/>
+  </div>
+  <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{bookingAgent_name.value}}"/>
+      <link itemprop="url" href="{{bookingAgent_url.value}}"/>
+  </div>
+  <meta itemprop="bookingTime" content="{{bookingTime.value}}"/>
+  <meta itemprop="modifiedTime" content="{{modifiedTime.value}}"/>
+  <div itemprop="programMembership" itemscope itemtype="http://schema.org/ProgramMembership">
+      <meta itemprop="memberNumber" content="{{programMembership_memberNumber.value}}"/>
+      <meta itemprop="program" content="{{programMembership_program.value}}"/>
+  </div>
+  <div itemprop="reservationFor" itemscope itemtype="http://schema.org/Flight">
+      <meta itemprop="flightNumber" content="{{reservationFor_flightNumber.value}}"/>
+    <div itemprop="airline" itemscope itemtype="http://schema.org/Airline">
+        <meta itemprop="name" content="{{reservationFor_airline_name.value}}"/>
+        <meta itemprop="iataCode" content="{{reservationFor_airline_iataCode.value}}"/>
+    </div>
+    <div itemprop="operatedBy" itemscope itemtype="http://schema.org/Airline">
+        <meta itemprop="name" content="{{reservationFor_operatedBy_name.value}}"/>
+        <meta itemprop="iataCode" content="{{reservationFor_operatedBy_iataCode.value}}"/>
+    </div>
+    <div itemprop="departureAirport" itemscope itemtype="http://schema.org/Airport">
+        <meta itemprop="name" content="{{reservationFor_departureAirport_name.value}}"/>
+        <meta itemprop="iataCode" content="{{reservationFor_departureAirport_iataCode.value}}"/>
+    </div>
+    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value}}"/>
+    <meta itemprop="departureGate" content="{{reservationFor_departureGate.value}}"/>
+    <meta itemprop="departureTerminal" content="{{reservationFor_departureTerminal.value}}"/>
+    <div itemprop="arrivalAirport" itemscope itemtype="http://schema.org/Airport">
+        <meta itemprop="name" content="{{reservationFor_arrivalAirport_name.value}}"/>
+        <meta itemprop="iataCode" content="{{reservationFor_arrivalAirport_iataCode.value}}"/>
+    </div>
+    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value}}"/>
+    <meta itemprop="arrivalGate" content="{{reservationFor_arrivalGate.value}}"/>
+    <meta itemprop="arrivalTerminal" content="{{reservationFor_arrivalTerminal.value}}"/>
+    <meta itemprop="webCheckinTime" content="{{reservationFor_webCheckinTime.value}}"/>
+    <meta itemprop="boardingTime" content="{{reservationFor_boardingTime.value}}"/>
+  </div>
+  <meta itemprop="ticketNumber" content="{{ticketNumber.value}}"/>
+  <link itemprop="ticketDownloadUrl" href="{{ticketDownloadUrl.value}}"/>
+  <link itemprop="ticketPrintUrl" href="{{ticketPrintUrl.value}}"/>
+  <meta itemprop="ticketToken" content="{{ticketToken.value}}"/>
+  <meta itemprop="additionalTicketText" content="{{additionalTicketText.value}}"/>
+  <meta itemprop="airplaneSeat" content="{{airplaneSeat.value}}"/>
+  <div itemprop="airplaneSeatClass" itemscope itemtype="http://schema.org/AirplaneSeatClass">
+      <meta itemprop="name" content="{{airplaneSeatClass_name.value}}"/>
+  </div>
+  <meta itemprop="boardingGroup" content="{{boardingGroup.value}}"/>
+</div>
+</p>
+</body>
+</html>
