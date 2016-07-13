@@ -18,19 +18,12 @@ $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
 
 session_start();
 
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-    // Delete session and redirect to self
-    #$client->setAccessToken($_SESSION['access_token']);
-    #$client->revokeToken();   // removed granted permissions from account
-    $_SESSION = array();
-    if (ini_get('session.use_cookies')) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time()-42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
-    }
-    session_destroy();
-    header('Location: ' . $client->getRedirectUri());
-    exit(0);
+$action = '';
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
 }
+$data['action']    = $action;
+$data['action_uc'] = ucwords($action);
 
 if (isset($_GET['code']) && $_GET['code']) {
     // Validate OAuth2 result, set access token and redirect to self
@@ -43,19 +36,29 @@ if (isset($_GET['code']) && $_GET['code']) {
 $tpl_done = false;
 
 // route pages that work with and without login
-if (isset($_GET['action'])) {
-    switch ($_GET['action']) {
-        case 'faq':
-            $ho->setTemplate('faq_html');
-            $tpl_done = true;
-            break;
-        case 'send':
-            // Store input in session
-            $form_type = $_POST['form_type'];
-            $skey = 'form_' . $form_type;
-            $_SESSION[$skey] = $_POST;
-            break;
-    }
+switch ($action) {
+    case 'logout':
+        // Delete session and redirect to self
+        #$client->setAccessToken($_SESSION['access_token']);
+        #$client->revokeToken();   // removed granted permissions from account
+        $_SESSION = array();
+        if (ini_get('session.use_cookies')) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time()-42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        }
+        session_destroy();
+        header('Location: ' . $client->getRedirectUri());
+        exit(0);
+    case 'faq':
+        $ho->setTemplate('faq_html');
+        $tpl_done = true;
+        break;
+    case 'send':
+        // Store input in session
+        $form_type = $_POST['form_type'];
+        $skey = 'form_' . $form_type;
+        $_SESSION[$skey] = $_POST;
+        break;
 }
 
 if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token']) {
@@ -95,17 +98,13 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
         $ho->setTemplate('notverified_html');
         $tpl_done = true;
     } else {
-        switch ($_GET['action']) {
+        switch ($action) {
             case 'send':
                 echo 'This would send the mail...';
                 $mo = new MailOutput(dirname(__FILE__) . '/templates');
                 $mo->setTemplate('mail_' . $form_type);
-                $action = $form_type;
-                $skey = 'form_' . $action;
-                $data['action'] = $action;
-                $data['action_uc'] = ucwords($action);
-
-                $fd = new FieldDefinition($action);
+                $skey = 'form_' . $form_type;
+                $fd = new FieldDefinition($form_type);
                 $fd->setFieldValues($_SESSION[$skey]);
                 $fieldData = $fd->getFieldData();
                 $fields = $fieldData['fields'];
@@ -163,8 +162,6 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
     $data['auth_url'] = $client->createAuthUrl();
     $ho->setTemplate('index_html');
 }
-
-$data['action'] = $_GET['action'];
 
 $ho->setTemplateVars($data);
 $ho->sendOutputToStdout();
