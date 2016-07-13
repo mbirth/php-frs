@@ -121,35 +121,26 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
                     echo 'Mail sending failed!!';
                 }
                 break;
-            case 'event':
-                $ho->setTemplate('event_html');
-                $tpl_done = true;
-                break;
-            case 'flight':
-                $ho->setTemplate('flight_html');
-                $tpl_done = true;
-                $action = 'flight';
-                require 'prep_form.php';
-                break;
-             case 'hotel':
-                $ho->setTemplate('hotel_html');
-                $tpl_done = true;
-                $action = 'hotel';
-                require 'prep_form.php';
-                break;
-            case 'restaurant':
-                $ho->setTemplate('restaurant_html');
-                $tpl_done = true;
-                $action = 'restaurant';
-                require 'prep_form.php';
-                break;
-            case 'rentalcar':
-                $ho->setTemplate('rentalcar_html');
-                $tpl_done = true;
-                $action = 'rentalcar';
-                require 'prep_form.php';
-                break;
             default:
+                if (in_array($action, array('event', 'flight', 'hotel', 'restaurant', 'rentalcar'))) {
+                    $ho->setTemplate($action . '_html');
+                    $tpl_done = true;
+                    $skey = 'form_' . $action;
+
+                    $placeholders = array(
+                        'USER_NAME'  => $data['user']['name_first'] . ' ' . $data['user']['name_last'],
+                        'USER_EMAIL' => $data['user']['email'],
+                    );
+                    $fd = new FieldDefinition($action);
+                    $fd->setPlaceholders($placeholders);
+                    $fd->setFieldValues($_SESSION[$skey]);
+
+                    $by_group = $fd->getGroups();
+
+                    // Convert hash to list for Mustache compatibility
+                    $by_group = array_values($by_group);
+                    $data['form_data'] = $by_group;
+                }
                 if (!$tpl_done) {
                     $ho->setTemplate('loggedin_html');
                     $tpl_done = true;
