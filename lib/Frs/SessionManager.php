@@ -5,7 +5,6 @@ namespace Frs;
 class SessionManager
 {
     private $client;
-    private $userinfo;
     private $googleAuthValid;
 
     public function __construct()
@@ -64,14 +63,6 @@ class SessionManager
 
     public function verifySession()
     {
-        // Authenticated
-        $created = $_SESSION['access_token']['created'];
-        $expires = $_SESSION['access_token']['expires_in'];
-        $expire_stamp = intval($created) + intval($expires);
-        $data['session_created'] = $created;
-        $data['session_expires'] = $expires;
-        $data['session_time_left'] = ($expire_stamp) - time();
-
         $this->client->setAccessToken($_SESSION['access_token']);
         if ($this->client->isAccessTokenExpired()) {
             throw new \Exception('Token expired. <a href="' . $this->getAuthUrl() . '">Request new one</a>.');
