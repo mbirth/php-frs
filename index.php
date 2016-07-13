@@ -3,6 +3,7 @@
 require_once __DIR__ . '/vendor' . '/autoload.php';
 
 use \Frs\FieldDefinition;
+use \Frs\SessionManager;
 use \Frs\Output\HtmlOutput;
 use \Frs\Output\MailOutput;
 
@@ -12,11 +13,7 @@ $data = array(
     'session_time_left' => 0,
 );
 
-$client = new Google_Client();
-$client->setAuthConfigFile('client_secret.json');
-$client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
-
-session_start();
+$sm = new SessionManager();
 
 $action = '';
 if (isset($_GET['action'])) {
@@ -26,11 +23,7 @@ $data['action']    = $action;
 $data['action_uc'] = ucwords($action);
 
 if (isset($_GET['code']) && $_GET['code']) {
-    // Validate OAuth2 result, set access token and redirect to self
-    $client->authenticate($_GET['code']);
-    $_SESSION['access_token'] = $client->getAccessToken();
-    header('Location: ' . $client->getRedirectUri());
-    exit(0);
+    $sm->authAndRedirect($_GET['code']);  // exits
 }
 
 $tpl_done = false;
@@ -38,30 +31,18 @@ $tpl_done = false;
 // route pages that work with and without login
 switch ($action) {
     case 'logout':
-        // Delete session and redirect to self
-        #$client->setAccessToken($_SESSION['access_token']);
-        #$client->revokeToken();   // removed granted permissions from account
-        $_SESSION = array();
-        if (ini_get('session.use_cookies')) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time()-42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
-        }
-        session_destroy();
-        header('Location: ' . $client->getRedirectUri());
-        exit(0);
+        $sm->logoutAndRedirect();  // exits
     case 'faq':
         $ho->setTemplate('faq_html');
         $tpl_done = true;
         break;
     case 'send':
-        // Store input in session
-        $form_type = $_POST['form_type'];
-        $skey = 'form_' . $form_type;
-        $_SESSION[$skey] = $_POST;
+        // Store input in session, in case the token timed out
+        $sm->storeFormData($_POST['form_type']);
         break;
 }
 
-if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+if (!$tpl_done && $sm->hasSessionToken()) {
     // Authenticated
     $created = $_SESSION['access_token']['created'];
     $expires = $_SESSION['access_token']['expires_in'];
@@ -70,31 +51,19 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
     $data['session_expires'] = $expires;
     $data['session_time_left'] = ($expire_stamp) - time();
 
-    $client->setAccessToken($_SESSION['access_token']);
-    if ($client->isAccessTokenExpired()) {
-        // TODO: Redirect to $client->createAuthUrl(); to reauthenticate
-        echo 'Token expired! <a href="' . $client->createAuthUrl() . '">Request new one</a>.';
+    try {
+        $sm->verifySession();
+    } catch (Exception $e) {
+        echo $e->getMessage();
         #session_destroy();
         die();
     }
 
-    $oauth = new Google_Service_Oauth2($client);
-    $userdata = $oauth->userinfo->get();
-
-    $data['user'] = array(
-        'name_first' => $userdata->givenName,
-        'name_last'  => $userdata->familyName,
-        'name'       => $userdata->name,
-        'picture'    => $userdata->picture,
-        'email'      => $userdata->email,
-        'gender'     => $userdata->gender,
-    );
-
+    $data['user'] = $sm->getUserinfo();
     $data['date_today'] = date('Y-m-d');
 
-
     // Check $userdata->verifiedEmail and deny if not verified.
-    if (!$userdata->verifiedEmail) {
+    if (!$data['user']['verifiedEmail']) {
         $ho->setTemplate('notverified_html');
         $tpl_done = true;
     } else {
@@ -150,7 +119,7 @@ if (!$tpl_done && isset($_SESSION['access_token']) && $_SESSION['access_token'])
     }
 } elseif (!$tpl_done) {
     // Not authenticated
-    $data['auth_url'] = $client->createAuthUrl();
+    $data['auth_url'] = $sm->getAuthUrl();
     $ho->setTemplate('index_html');
 }
 
