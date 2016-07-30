@@ -93,21 +93,21 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "984f6a96297242e901bde518489374a9dec209df"
+                "reference": "18dd5534280318598e8770cb7929e9a542e91c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/984f6a96297242e901bde518489374a9dec209df",
-                "reference": "984f6a96297242e901bde518489374a9dec209df",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/18dd5534280318598e8770cb7929e9a542e91c0d",
+                "reference": "18dd5534280318598e8770cb7929e9a542e91c0d",
                 "shasum": ""
             },
             "require": {
                 "firebase/php-jwt": "~2.0|~3.0",
-                "google/apiclient-services": "*@dev",
+                "google/apiclient-services": "^0.5",
                 "google/auth": "0.9",
                 "guzzlehttp/guzzle": "~5.2|~6.0",
                 "guzzlehttp/psr7": "^1.2",
@@ -148,21 +148,21 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-06-24 16:44:42"
+            "time": "2016-07-21 18:41:10"
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.3",
+            "version": "v0.5",
             "target-dir": "Google/Service",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "b2faa3d37da789be2cdcf0c5acae3896a0cda958"
+                "reference": "a2d43f4c7eace8c7aa16c5ea83191344c63b4526"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/b2faa3d37da789be2cdcf0c5acae3896a0cda958",
-                "reference": "b2faa3d37da789be2cdcf0c5acae3896a0cda958",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/a2d43f4c7eace8c7aa16c5ea83191344c63b4526",
+                "reference": "a2d43f4c7eace8c7aa16c5ea83191344c63b4526",
                 "shasum": ""
             },
             "require": {
@@ -183,7 +183,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-06-02 18:58:36"
+            "time": "2016-07-21 18:01:41"
         },
         {
             "name": "google/auth",
@@ -235,27 +235,27 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.0",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d094e337976dff9d8e2424e8485872194e768662",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/promises": "~1.0",
-                "guzzlehttp/psr7": "~1.1",
-                "php": ">=5.5.0"
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.3.1",
+                "php": ">=5.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -293,7 +293,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-03-21 20:02:09"
+            "time": "2016-07-15 17:22:37"
         },
         {
             "name": "guzzlehttp/promises",
@@ -530,27 +530,28 @@
         },
         {
             "name": "npm-asset/mdl-ext",
-            "version": "0.9.12",
+            "version": "0.9.15",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/mdl-ext/-/mdl-ext-0.9.12.tgz",
+                "url": "https://registry.npmjs.org/mdl-ext/-/mdl-ext-0.9.15.tgz",
                 "reference": null,
-                "shasum": "b8da5e92d73ec4daeefc234bd9fcd01a809b72dd"
+                "shasum": "dfab5033c85c83464aeba17d712f24d1ec85abf8"
             },
             "require-dev": {
-                "npm-asset/autoprefixer": "6.3.6",
-                "npm-asset/babel-cli": "6.10.1",
-                "npm-asset/babel-core": "6.10.4",
-                "npm-asset/babel-eslint": "6.1.0",
+                "npm-asset/autoprefixer": "6.3.7",
+                "npm-asset/babel-cli": "6.11.4",
+                "npm-asset/babel-core": "6.11.4",
+                "npm-asset/babel-eslint": "6.1.2",
                 "npm-asset/babel-loader": "6.2.4",
                 "npm-asset/babel-plugin-add-module-exports": "0.2.1",
                 "npm-asset/babel-plugin-syntax-decorators": "6.8.0",
                 "npm-asset/babel-plugin-transform-decorators-legacy": "1.3.4",
-                "npm-asset/babel-plugin-transform-runtime": "6.9.0",
+                "npm-asset/babel-plugin-transform-runtime": "6.12.0",
                 "npm-asset/babel-polyfill": "6.9.1",
                 "npm-asset/babel-preset-es2015": "6.9.0",
                 "npm-asset/babel-preset-stage-0": "6.5.0",
-                "npm-asset/babel-runtime": "6.9.2",
+                "npm-asset/babel-register": "6.11.6",
+                "npm-asset/babel-runtime": "6.11.6",
                 "npm-asset/chai": "3.5.0",
                 "npm-asset/chalk": "1.1.3",
                 "npm-asset/codecov.io": "0.1.6",
@@ -561,17 +562,17 @@
                 "npm-asset/doctrine": "1.2.2",
                 "npm-asset/eq.js": "1.9.0",
                 "npm-asset/es6-promise": "3.2.1",
-                "npm-asset/eslint": "2.13.1",
-                "npm-asset/eslint-loader": "1.3.0",
+                "npm-asset/eslint": "3.1.1",
+                "npm-asset/eslint-loader": "1.5.0",
                 "npm-asset/extract-text-webpack-plugin": "1.0.1",
                 "npm-asset/file-loader": "0.9.0",
-                "npm-asset/ghooks": "1.2.4",
+                "npm-asset/ghooks": "1.3.2",
                 "npm-asset/gulp": "3.9.1",
-                "npm-asset/gulp-git": "1.7.2",
+                "npm-asset/gulp-git": "1.10.0",
                 "npm-asset/gulp-posthtml": "1.5.2",
                 "npm-asset/ignore-styles": "4.0.0",
                 "npm-asset/istanbul": "1.0.0-alpha.2",
-                "npm-asset/jsdom": "9.2.1",
+                "npm-asset/jsdom": "9.4.1",
                 "npm-asset/jsdomify": "2.1.0",
                 "npm-asset/material-design-lite": "1.1.3",
                 "npm-asset/mocha": "2.5.3",
@@ -581,17 +582,20 @@
                 "npm-asset/postcss-loader": "0.9.1",
                 "npm-asset/posthtml-include": "1.1.0",
                 "npm-asset/require-uncached": "1.0.2",
-                "npm-asset/resolve-url-loader": "1.4.4",
-                "npm-asset/rimraf": "2.5.2",
+                "npm-asset/resolve-url-loader": "1.6.0",
+                "npm-asset/rimraf": "2.5.4",
                 "npm-asset/roboto-fontface": ">=0.5.0,<0.6.0",
-                "npm-asset/sass-loader": "3.2.1",
+                "npm-asset/sass-loader": "4.0.0",
                 "npm-asset/semantic-release": ">=4.3.5,<5.0.0",
-                "npm-asset/sinon": "1.17.4",
+                "npm-asset/sinon": "1.17.5",
                 "npm-asset/style-loader": "0.13.1",
+                "npm-asset/stylelint": "6.9.0",
+                "npm-asset/stylelint-config-standard": "10.0.0",
+                "npm-asset/stylelint-webpack-plugin": "0.2.0",
                 "npm-asset/url-loader": "0.5.7",
                 "npm-asset/webpack": "1.13.1",
                 "npm-asset/webpack-dev-server": "1.14.1",
-                "npm-asset/yargs": "4.7.1"
+                "npm-asset/yargs": "4.8.1"
             },
             "type": "npm-asset-library",
             "extra": {
@@ -607,10 +611,13 @@
                 "npm-asset-scripts": {
                     "commit": "git-cz",
                     "dev": "webpack --progress --colors --watch --mode=dev",
+                    "stylelint": "stylelint './src/**/*.s?(a|c)ss' --syntax scss",
                     "eslint": "eslint ./src",
+                    "lint": "npm run stylelint && npm run eslint",
                     "test": "mocha  -w --opts ./mocha.opts './test/**/*.spec.js'",
+                    "test:pattern": "mocha  -w --opts ./mocha.opts './test/**/*.spec.js' --grep $pattern",
                     "test:coverage": "babel-node ./node_modules/.bin/istanbul cover --root ./src ./node_modules/.bin/_mocha -- --opts ./mocha.opts  -r .istanbul-mocha.config.js './test/**/*.spec.js'",
-                    "check-coverage": "istanbul check-coverage --statements 90 --branches 70 --functions 90 --lines 90",
+                    "check-coverage": "istanbul check-coverage --statements 95 --branches 75 --functions 95 --lines 95",
                     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
                     "clean": "rimraf lib && mkdir lib",
                     "prebuild": "npm run clean && ./node_modules/.bin/webpack",
@@ -1454,16 +1461,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.26",
+            "version": "4.8.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74"
+                "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fc1d8cd5b5de11625979125c5639347896ac2c74",
-                "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c062dddcb68e44b563f66ee319ddae2b5a322a90",
+                "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90",
                 "shasum": ""
             },
             "require": {
@@ -1522,7 +1529,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-05-17 03:09:28"
+            "time": "2016-07-21 06:48:14"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1954,16 +1961,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "2884c26ce4c1d61aebf423a8b912950fe7c764de"
+                "reference": "1819adf2066880c7967df7180f4f662b6f0567ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/2884c26ce4c1d61aebf423a8b912950fe7c764de",
-                "reference": "2884c26ce4c1d61aebf423a8b912950fe7c764de",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1819adf2066880c7967df7180f4f662b6f0567ac",
+                "reference": "1819adf2066880c7967df7180f4f662b6f0567ac",
                 "shasum": ""
             },
             "require": {
@@ -1999,7 +2006,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-07-17 14:02:08"
         },
         {
             "name": "webmozart/assert",
