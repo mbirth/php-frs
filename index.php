@@ -8,10 +8,7 @@ use \Frs\Output\HtmlOutput;
 use \Frs\Output\MailOutput;
 
 $ho = new HtmlOutput(dirname(__FILE__) . '/templates');
-
-$data = array(
-    'session_time_left' => 0,
-);
+$ho->setTemplateVar('session_time_left', 0);
 
 $sm = new SessionManager();
 
@@ -19,8 +16,8 @@ $action = '';
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
-$data['action']    = $action;
-$data['action_uc'] = ucwords($action);
+$ho->setTemplateVar('action', $action);
+$ho->setTemplateVar('action_uc', ucwords($action));
 
 if (isset($_GET['code']) && $_GET['code']) {
     $sm->authAndRedirect($_GET['code']);  // exits
@@ -47,9 +44,9 @@ if (!$tpl_done && $sm->hasSessionToken()) {
     $created = $_SESSION['access_token']['created'];
     $expires = $_SESSION['access_token']['expires_in'];
     $expire_stamp = intval($created) + intval($expires);
-    $data['session_created'] = $created;
-    $data['session_expires'] = $expires;
-    $data['session_time_left'] = ($expire_stamp) - time();
+    $ho->setTemplateVar('session_created', $created);
+    $ho->setTemplateVar('session_expires', $expires);
+    $ho->setTemplateVar('session_time_left', ($expire_stamp) - time());
 
     try {
         $sm->verifySession();
@@ -59,11 +56,12 @@ if (!$tpl_done && $sm->hasSessionToken()) {
         die();
     }
 
-    $data['user'] = $sm->getUserinfo();
-    $data['date_today'] = date('Y-m-d');
+    $userInfo = $sm->getUserinfo();
+    $ho->setTemplateVar('user', $userInfo);
+    $ho->setTemplateVar('date_today', date('Y-m-d'));
 
     // Check $userdata->verifiedEmail and deny if not verified.
-    if (!$data['user']['verifiedEmail']) {
+    if (!$userInfo['verifiedEmail']) {
         $ho->setTemplate('notverified_html');
         $tpl_done = true;
     } else {
@@ -78,6 +76,7 @@ if (!$tpl_done && $sm->hasSessionToken()) {
                 $fieldData = $fd->getFieldData();
                 $fields = $fieldData['fields'];
 
+                $data = $ho->getTemplateVars();
                 $data['email_date'] = date('r');
                 $data = array_merge($data, $fields);
                 $mo->setTemplateVars($data);
@@ -97,8 +96,8 @@ if (!$tpl_done && $sm->hasSessionToken()) {
                     $skey = 'form_' . $action;
 
                     $placeholders = array(
-                        'USER_NAME'  => $data['user']['name_first'] . ' ' . $data['user']['name_last'],
-                        'USER_EMAIL' => $data['user']['email'],
+                        'USER_NAME'  => $userInfo['name_first'] . ' ' . $userInfo['name_last'],
+                        'USER_EMAIL' => $userInfo['email'],
                     );
                     $fd = new FieldDefinition($action);
                     $fd->setPlaceholders($placeholders);
@@ -108,7 +107,7 @@ if (!$tpl_done && $sm->hasSessionToken()) {
 
                     // Convert hash to list for Mustache compatibility
                     $by_group = array_values($by_group);
-                    $data['form_data'] = $by_group;
+                    $ho->setTemplateVar('form_data', $by_group);
                 }
                 if (!$tpl_done) {
                     $ho->setTemplate('loggedin_html');
@@ -119,9 +118,8 @@ if (!$tpl_done && $sm->hasSessionToken()) {
     }
 } elseif (!$tpl_done) {
     // Not authenticated
-    $data['auth_url'] = $sm->getAuthUrl();
+    $ho->setTemplateVar('auth_url', $sm->getAuthUrl());
     $ho->setTemplate('index_html');
 }
 
-$ho->setTemplateVars($data);
 $ho->sendOutputToStdout();

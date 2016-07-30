@@ -44,6 +44,11 @@ class GenericOutput
         $this->templateVars = array_merge($this->templateVars, $tplVars);
     }
 
+    public function getTemplateVars()
+    {
+        return $this->templateVars;
+    }
+
     public function getRenderedOutput()
     {
         return $this->template->render($this->templateVars);
