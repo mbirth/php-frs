@@ -1,5 +1,17 @@
+<div class="mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label">
+    <select id="{{field_id}}_type" name="{{field_id}}_type" size="1" class="tokentypesel mdlext-selectfield__select">
+        <option value="https://">URL</option>
+        <option value="qrCode:">QR code</option>
+        <option value="aztecCode:">Aztec code</option>
+        <option value="barcode128:">ISO-15417 barcode</option>
+        <option value="barcodeEAN:">EAN barcode</option>
+        <option value="barcodeUPCA:">UPC-A barcode</option>
+    </select>
+    <label for="{{field_id}}_type" class="mdlext-selectfield__label">Type of {{title}}</label>
+    <span class="mdlext-selectfield__error">Please select a type!</span>
+</div>
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text" {{#required}}required{{/required}} id="{{field_id}}" name="{{field_id}}" value="{{value}}"/>
     <label class="mdl-textfield__label" for="{{field_id}}">{{title}}</label>
-    <span class="mdl-textfield__error">Please input a URL or barcode!</span>
+    <span class="mdl-textfield__error">Please input a value!</span>
 </div>
