@@ -1,0 +1,24 @@
+<div class="mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label">
+    <!-- https://developers.google.com/gmail/markup/reference/event-reservation -->
+    <select id="{{field_id}}" name="{{field_id}}" {{#required}}required{{/required}} size="1" class="mdlext-selectfield__select" data-value="{{value}}">
+        <option value=""></option>
+        <option value="Event">Generic Event</option>
+        <option value="BusinessEvent">Business Event</option>
+        <option value="ChildrenEvent">Children Event</option>
+        <option value="ComedyEvent">Comedy Event</option>
+        <option value="DanceEvent">Dance Event</option>
+        <option value="EducationEvent">Education Event</option>
+        <option value="Festival">Festival</option>
+        <option value="FoodEvent">Food Event</option>
+        <option value="LiteraryEvent">Literary Event</option>
+        <option value="MovieShowing">Movie Showing</option>
+        <option vaule="MusicEvent">Music Event</option>
+        <option value="SaleEvent">Sale Event</option>
+        <option value="SocialEvent">Social Event</option>
+        <option value="SportsEvent">Sports Event</option>
+        <option value="TheaterEvent">Theater Event</option>
+        <option value="VisualArtsEvent">Visual Arts Event</option>
+    </select>
+    <label for="{{field_id}}" class="mdlext-selectfield__label">{{title}}</label>
+    <span class="mdlext-selectfield__error">Please select a type!</span>
+</div>

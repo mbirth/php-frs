@@ -1,0 +1,301 @@
+{
+    "groups": {
+        "0": "Event Information",
+        "1": "Venue",
+        "2": "Date",
+        "3": "Ticket",
+        "4": "Booking Information",
+        "5": "Program Membership",
+        "6": "Booking Agency",
+        "7": "Hotlinks",
+        "8": "Metadata"
+    },
+    "fields": {
+        "action_name": {
+            "title": "Custom Action Title",
+            "type": "text",
+            "required": false,
+            "group": 7
+        },
+        "action_url": {
+            "title": "Custom Action URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "additionalTicketText": {
+            "title": "Additional information about the ticket",
+            "type": "text",
+            "required": false,
+            "group": 3
+        },
+        "bookingAgent_name": {
+            "title": "Name",
+            "type": "text",
+            "required": false,
+            "group": 6,
+            "short": true
+        },
+        "bookingAgent_image": {
+            "title": "Image",
+            "type": "url",
+            "required": false,
+            "group": 6
+        },
+        "bookingAgent_url": {
+            "title": "URL",
+            "type": "url",
+            "required": false,
+            "group": 6
+        },
+        "bookingTime": {
+            "title": "Booking Date",
+            "type": "datetime",
+            "required": false,
+            "group": 6
+        },
+        "cancelReservationUrl": {
+            "title": "Cancel URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "confirmReservationUrl": {
+            "title": "Confirm URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "modifiedTime": {
+            "title": "Modified Time",
+            "type": "datetime",
+            "required": false,
+            "group": 8
+        },
+        "modifyReservationUrl": {
+            "title": "Modify URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "numSeats": {
+            "title": "Number of seats",
+            "type": "number",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "price": {
+            "title": "Price",
+            "type": "decimal",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "priceCurrency": {
+            "title": "Currency",
+            "type": "currency",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "programMembership_program": {
+            "title": "Name of Program",
+            "type": "text",
+            "required": false,
+            "group": 5,
+            "short": true
+        },
+        "programMembership_memberNumber": {
+            "title": "Member No.",
+            "type": "text",
+            "required": false,
+            "group": 5,
+            "short": true
+        },
+        "reservationFor_type": {
+            "title": "Event type",
+            "type": "eventtype",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_description": {
+            "title": "Short description of event",
+            "type": "text",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_doorTime": {
+            "title": "Time of admission (door time)",
+            "type": "datetime",
+            "required": false,
+            "group": 2
+        },
+        "reservationFor_endDate": {
+            "title": "End date and time",
+            "type": "datetime",
+            "required": false,
+            "group": 2
+        },
+        "reservationFor_image": {
+            "title": "Image URL for event",
+            "type": "url",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_location_name": {
+            "title": "Name of the venue",
+            "type": "text",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_location_address_streetAddress": {
+            "title": "Street",
+            "type": "text",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_location_address_postalCode": {
+            "title": "Zip Code",
+            "type": "number",
+            "required": true,
+            "group": 1,
+            "short": true
+        },
+        "reservationFor_location_address_addressLocality": {
+            "title": "City",
+            "type": "text",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_location_address_addressRegion": {
+            "title": "Region",
+            "type": "text",
+            "required": true,
+            "group": 1,
+            "short": true
+        },
+        "reservationFor_location_address_addressCountry": {
+            "title": "Country",
+            "type": "country",
+            "required": true,
+            "group": 1
+        },
+        "reservationFor_name": {
+            "title": "Event's name",
+            "type": "text",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_performer_name": {
+            "title": "Performer's name",
+            "type": "text",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_performer_image": {
+            "title": "URL of performer's image",
+            "type": "url",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_performer_url": {
+            "title": "URL to performer",
+            "type": "url",
+            "required": false,
+            "group": 0
+        },
+        "reservationFor_startDate": {
+            "title": "Start date and time of event",
+            "type": "datetime",
+            "required": true,
+            "group": 2
+        },
+        "reservationFor_url": {
+            "title": "URL to event",
+            "type": "url",
+            "required": false,
+            "group": 0
+        },
+        "reservationNumber": {
+            "title": "Reservation #",
+            "type": "text",
+            "required": true,
+            "group": 4,
+            "short": true
+        },
+        "reservationStatus": {
+            "title": "Status",
+            "type": "status",
+            "required": true,
+            "group": 4,
+            "short": true
+        },
+        "ticketDownloadUrl": {
+            "title": "Ticket Download URL",
+            "type": "url",
+            "required": false,
+            "group": 3
+        },
+        "ticketNumber": {
+            "title": "Ticket ID",
+            "type": "text",
+            "required": false,
+            "group": 3
+        },
+        "ticketPrintUrl": {
+            "title": "URL to print ticket",
+            "type": "url",
+            "required": false,
+            "group": 3
+        },
+        "ticketToken": {
+            "title": "Ticket Barcode",
+            "type": "barcode",
+            "required": false,
+            "group": 3
+        },
+        "underName_name": {
+            "title": "Ticket holder",
+            "type": "text",
+            "required": true,
+            "group": 3,
+            "default": "USER_NAME"
+        },
+        "underName_email": {
+            "title": "Email address",
+            "type": "email",
+            "required": false,
+            "group": 3,
+            "default": "USER_EMAIL"
+        },
+        "url": {
+            "title": "Reservation URL",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "venueSection": {
+            "title": "Seat: Section",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "venueRow": {
+            "title": "Seat: Row",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        },
+        "venueSeat": {
+            "title": "Seat: Seat#",
+            "type": "text",
+            "required": false,
+            "group": 3,
+            "short": true
+        }
+    }
+}
