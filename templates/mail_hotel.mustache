@@ -42,6 +42,9 @@ Content-Type: text/html; charset=utf-8
     <span itemprop="name">{{bookingAgent_name.value}}</span><br/>
     <a itemprop="url" href="{{bookingAgent_url.value}}">{{bookingAgent_url.value}}</a><br/>
   </div>
+  {{# url.value }}
+    <a itemprop="url" href="{{url.value}}">View your reservation online.</a><br/>
+  {{/ url.value }}
 </div>
 </p>
 </body>
