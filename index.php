@@ -69,6 +69,7 @@ if (!$tpl_done && $sm->hasSessionToken()) {
             case 'send':
                 echo 'This would send the mail...';
                 $mo = new MailOutput(dirname(__FILE__) . '/templates');
+                $form_type = $_REQUEST['form_type'];
                 $mo->setTemplate('mail_' . $form_type);
                 $skey = 'form_' . $form_type;
                 $fd = new FieldDefinition($form_type);
@@ -80,13 +81,15 @@ if (!$tpl_done && $sm->hasSessionToken()) {
                 $data['email_date'] = date('r');
                 $data = array_merge($data, $fields);
                 $mo->setTemplateVars($data);
-                $mo->setSubject('[FRS] ' . $data['action_uc'] . ' Reservation');
+                $mo->setTemplateVar('form_type', $form_type);
+                $mo->setTemplateVar('form_type_uc', ucwords($form_type));
+                $mo->setSubject('[FRS] ' . ucwords($form_type) . ' Reservation');
                 $mo->addRecipient($data['user']['email'], $data['user']['name_first'] . ' ' . $data['user']['name_last']);
                 $mail_sent = $mo->send();
                 if ($mail_sent) {
-                    echo 'Mail sent successfully.';
+                    $ho->setTemplate('mail_sent_html');
                 } else {
-                    echo 'Mail sending failed!!';
+                    $ho->setTemplate('mail_failed_html');
                 }
                 break;
             default:

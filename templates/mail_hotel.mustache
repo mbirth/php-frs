@@ -1,5 +1,5 @@
 From: Fake Reservation System <{{user.email}}>
-Subject: [FRS] {{action_uc}} Reservation
+Subject: [FRS] {{form_type_uc}} Reservation
 Date: {{email_date}}
 X-Mailer: FRS/1.0
 MIME-Version: 1.0
@@ -19,11 +19,11 @@ Content-Type: text/html; charset=utf-8
   <div itemprop="reservationFor" itemscope itemtype="http://schema.org/LodgingBusiness">
     Hotel: <span itemprop="name">{{reservationFor_name.value}}</span><br/>
     <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-      <meta itemprop="streetAddress" content="{{reservationFor_address_streetAddress.value}}"/>
-      <meta itemprop="addressLocality" content="{{reservationFor_address_addressLocality.value}}"/>
-      <meta itemprop="addressRegion" content="{{reservationFor_address_addressRegion.value}}"/>
-      <meta itemprop="postalCode" content="{{reservationFor_address_postalCode.value}}"/>
-      <meta itemprop="addressCountry" content="{{reservationFor_address_addressCountry.value}}"/>
+      <span itemprop="streetAddress">{{reservationFor_address_streetAddress.value}}</span><br/>
+      <span itemprop="addressLocality">{{reservationFor_address_addressLocality.value}}</span><br/>
+      <span itemprop="addressRegion">{{reservationFor_address_addressRegion.value}}</span><br/>
+      <span itemprop="postalCode">{{reservationFor_address_postalCode.value}}</span>
+      <span itemprop="addressCountry">{{reservationFor_address_addressCountry.value}}</span><br/>
     </div>
     Tel.: <span itemprop="telephone">{{reservationFor_telephone.value}}</span><br/>
     <a itemprop="url" href="{{reservationFor_url.value}}">Homepage</a><br/>
