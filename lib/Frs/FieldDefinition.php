@@ -61,7 +61,7 @@ class FieldDefinition
      */
     private function addValueTranslations(&$field)
     {
-        if (!isset($field['value'])) {
+        if (!isset($field['value']) || empty($field['value'])) {
             return;
         }
         switch ($field['type']) {
