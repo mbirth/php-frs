@@ -1,0 +1,89 @@
+From: Fake Reservation System <{{user.email}}>
+Subject: [FRS] {{form_type_uc}} Reservation
+Date: {{email_date}}
+X-Mailer: FRS/1.0
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+<p>
+<h1>YOUR RESERVATION DETAILS</h1>
+<p>
+<div itemscope itemtype="http://schema.org/EventReservation">
+    Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
+  <link itemprop="reservationStatus" href="{{reservationStatus.value}}"/>
+  <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{underName_name.value}}"/>
+      <meta itemprop="email" content="{{underName_email.value}}"/>
+  </div>
+  <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{bookingAgent_name.value}}"/>
+      <link itemprop="image" href="{{bookingAgent_image.value}}"/>
+      <link itemprop="url" href="{{bookingAgent_url.value}}"/>
+  </div>
+  <meta itemprop="bookingTime" content="{{bookingTime.value_iso8601}}"/>
+  <div itemprop="programMembership" itemscope itemtype="http://schema.org/ProgramMembership">
+      <meta itemprop="memberNumber" content="{{programMembership_memberNumber.value}}"/>
+      <meta itemprop="program" content="{{programMembership_program.value}}"/>
+  </div>
+  <div itemprop="reservationFor" itemscope itemtype="http://schema.org/{{reservationFor_type.value}}">
+    Event: <strong><span itemprop="name">{{reservationFor_name.value}}</span></strong><br/>
+    (<a itemprop="url">{{reservationFor_url.value}}</a>)<br/>
+    <link itemprop="image" href="{{reservationFor_image.value}}"/>
+    <div itemprop="performer" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{reservationFor_performer_name.value}}</span><br/>
+        <link itemprop="image" href="{{reservationFor_performer_image.value}}"/>
+        <a itemprop="url">{{reservationFor_performer_url.value}}</a><br/>
+    </div>
+
+    <div itemprop="location" itemscope itemtype="http://schema.org/Place">
+      Venue: <strong><span itemprop="name">{{reservationFor_location_name.value}}</span></strong><br/>
+      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">{{reservationFor_location_address_streetAddress.value}}</span><br/>
+        <span itemprop="addressLocality">{{reservationFor_location_address_addressLocality.value}}</span><br/>
+        <span itemprop="addressRegion">{{reservationFor_location_address_addressRegion.value}}</span><br/>
+        <span itemprop="postalCode">{{reservationFor_location_address_postalCode.value}}</span>
+        <span itemprop="addressCountry">{{reservationFor_location_address_addressCountry.value}}</span><br/>
+      </div>
+    </div>
+
+    Starts at: {{reservationFor_startDate.value_human}}<br/>
+    <meta itemprop="startDate" content="{{reservationFor_startDate.value_iso8601}}"/>
+    Doors open: {{reservationFor_doorTime.value_human}}<br/>
+    <meta itemprop="doorTime" content="{{reservationFor_doorTime.value_iso8601}}"/>
+    Ends: {{reservationFor_endDate.value_human}}<br/>
+    <meta itemprop="endDate" content="{{reservationFor_endDate.value_iso8601}}"/>
+  </div>
+
+  <div itemprop="action" itemscope itemtype="http://schema.org/Action">
+    <meta itemprop="name" content="{{action_name.value}}"/>
+    <link itemprop="url" href="{{action_url.value}}"/>
+  </div>
+
+  <link itemprop="cancelReservationUrl" href="{{cancelReservationUrl.value}}"/>
+  <link itemprop="confirmReservationUrl" href="{{confirmReservationUrl.value}}"/>
+  <link itemprop="modifyReservationUrl" href="{{modifyReservationUrl.value}}"/>
+  <meta itemprop="modifiedTime" content="{{modifiedTime.value_iso8601}}"/>
+  <br/>
+  Reserved <span itemprop="numSeats">{{numSeats.value}}</span> seats<br/>
+  <br/>
+  <meta itemprop="ticketNumber" content="{{ticketNumber.value}}"/>
+  <link itemprop="ticketDownloadUrl" href="{{ticketDownloadUrl.value}}"/>
+  <link itemprop="ticketPrintUrl" href="{{ticketPrintUrl.value}}"/>
+  <meta itemprop="ticketToken" content="{{ticketToken.value}}"/>
+  <meta itemprop="additionalTicketText" content="{{additionalTicketText.value}}"/>
+
+  Seat: <span itemprop="venueSection">{{venueSection.value}}</span>,
+  <span itemprop="venueRow">{{venueRow.value}}</span>,
+  <span itemprop="venueSeat">{{venueSeat.value}}</span><br/>
+  <br/>
+  Price: <span itemprop="price">{{price.value}}</span> <span itemprop="priceCurrency">{{priceCurrency.value}}</span><br/>
+  <br/>
+  {{# url.value }}
+    <a itemprop="url" href="{{url.value}}">View your reservation online.</a><br/>
+  {{/ url.value }}
+</div>
+</p>
+</body>
+</html>
