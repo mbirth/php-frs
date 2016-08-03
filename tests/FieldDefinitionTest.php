@@ -56,10 +56,18 @@ class FieldDefinitionTest extends \PHPUnit_Framework_TestCase
     public function testTranslatedValues()
     {
         ini_set('date.timezone', 'Europe/Berlin');
+        locale_set_default('en-US');
         $fdo = new FieldDefinition('hotel');
         $fdo->setFieldValues(array('modifiedTime'=>'2016-01-01 01:01:01'));
         $fd = $fdo->getFieldData();
-        $this->assertArrayHasKey('value_unixtime', $fd['fields']['modifiedTime']);
-        $this->assertEquals(1451606461, $fd['fields']['modifiedTime']['value_unixtime']);
+        $fmt = $fd['fields']['modifiedTime'];
+        $this->assertArrayHasKey('value_unixtime', $fmt);
+        $this->assertArrayHasKey('value_human', $fmt);
+        $this->assertArrayHasKey('value_iso8601', $fmt);
+        $this->assertArrayHasKey('value_rfc2822', $fmt);
+        $this->assertEquals(1451606461, $fmt['value_unixtime']);
+        $this->assertEquals('2016-01-01 01:01:01', $fmt['value_human']);
+        $this->assertEquals('2016-01-01T01:01:01+01:00', $fmt['value_iso8601']);
+        $this->assertEquals('Fri, 01 Jan 2016 01:01:01 +0100', $fmt['value_rfc2822']);
     }
 }
