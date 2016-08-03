@@ -66,7 +66,12 @@ class FieldDefinition
         }
         switch ($field['type']) {
             case 'datetime':
-                $field['value_unixtime'] = strtotime($field['value']);
+                // TODO: Find a way to be timezone-aware
+                $unixtime = strtotime($field['value']);
+                $field['value_unixtime'] = $unixtime;
+                $field['value_human']    = date('Y-m-d H:i:s', $unixtime);
+                $field['value_rfc2822']  = date('r', $unixtime);
+                $field['value_iso8601']  = date('c', $unixtime);
                 break;
         }
     }
