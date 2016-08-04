@@ -92,4 +92,9 @@ class SessionManager
         );
         return $result;
     }
+
+    public function getGoogleClient()
+    {
+        return $this->client;
+    }
 }
