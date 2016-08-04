@@ -11,8 +11,10 @@ class SessionManager
     {
         $this->googleAuthValid = false;
         $this->client = new \Google_Client();
+        $this->client->setApplicationName('Fake Reservation System');
         $this->client->setAuthConfigFile('client_secret.json');
         $this->client->addScope(\Google_Service_Oauth2::USERINFO_EMAIL);
+        $this->client->addScope(\Google_Service_Gmail::GMAIL_SEND);
 
         session_start();
     }
