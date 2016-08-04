@@ -10,9 +10,9 @@ class GmailTransport implements TransportInterface
     private $headers;
     private $content;
 
-    public function _construct(\Frs\SessionManager $sm)
+    public function __construct(\Frs\SessionManager $sm)
     {
-        $this->gms = new Google_Service_Gmail($sm->getGoogleClient());
+        $this->gms = new \Google_Service_Gmail($sm->getGoogleClient());
     }
 
     public function setContent($content)
@@ -49,7 +49,9 @@ class GmailTransport implements TransportInterface
 
     public function transmit()
     {
-        $mime = new Mail_mime();
+        $mime = new \Mail_mime();
+        $mime->setParam('html_charset', 'utf-8');
+        $mime->setParam('html_encoding', '8bit');
         $mime->addTo($this->recipients);
         $mime->setHTMLBody($this->content);
         $mime->setSubject($this->subject);
@@ -57,7 +59,7 @@ class GmailTransport implements TransportInterface
         $message_body = $mime->getMessage(null, null, $this->headers);
         $encoded_message = $this->b64url_encode($message_body);
 
-        $postBody = new Google_Service_Gmail_Message();
+        $postBody = new \Google_Service_Gmail_Message();
         $postBody->setRaw($encoded_message);
 
         $msg = $this->gms->users_messages->send('me', $postBody);
