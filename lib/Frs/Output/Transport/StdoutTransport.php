@@ -6,6 +6,10 @@ class StdoutTransport implements TransportInterface
 {
     private $content;
 
+    public function setParam($key, $value)
+    {
+    }
+
     public function setContent($content)
     {
         $this->content = $content;

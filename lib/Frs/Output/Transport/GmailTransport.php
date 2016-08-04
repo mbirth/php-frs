@@ -20,19 +20,21 @@ class GmailTransport implements TransportInterface
         $this->content = $content;
     }
 
-    public function setRecipients($recipients)
+    public function setParam($key, $value)
     {
-        $this->recipients = $recipients;
-    }
+        switch ($key) {
+            case 'to':
+                $this->recipients = $value;
+                break;
 
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
-    }
+            case 'subject':
+                $this->subject = $value;
+                break;
 
-    public function setHeaders($headers)
-    {
-        $this->headers = $headers;
+            case 'headers':
+                $this->headers = $value;
+                break;
+        }
     }
 
     /**
@@ -42,7 +44,7 @@ class GmailTransport implements TransportInterface
      * @param string $data Date to encode
      * @return string Encoded data
      */
-    private function b64url_encode($data)
+    private function base64UrlEncode($data)
     {
         return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
     }
@@ -57,7 +59,7 @@ class GmailTransport implements TransportInterface
         $mime->setSubject($this->subject);
 
         $message_body = $mime->getMessage(null, null, $this->headers);
-        $encoded_message = $this->b64url_encode($message_body);
+        $encoded_message = $this->base64UrlEncode($message_body);
 
         $postBody = new \Google_Service_Gmail_Message();
         $postBody->setRaw($encoded_message);

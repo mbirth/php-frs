@@ -14,17 +14,24 @@ class MailTransport implements TransportInterface
         $this->content = $content;
     }
 
-    public function setRecipients($recipients)
+    public function setParam($key, $value)
     {
-        $this->recipients = $recipients;
+        switch ($key) {
+            case 'to':
+                $this->recipients = $value;
+                break;
+
+            case 'subject':
+                $this->subject = $value;
+                break;
+
+            case 'headers':
+                $this->setHeaders($value);
+                break;
+        }
     }
 
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
-    }
-
-    public function setHeaders($headers)
+    private function setHeaders($headers)
     {
         $this->headers = '';
         foreach ($headers as $key=>$value) {

@@ -84,9 +84,9 @@ class MailOutput extends GenericOutput
         $this->setHeadersFromString($headers);
         $recipients = implode(', ', $this->recipients);
         // TODO: Check if any recipients in the first place
-        $this->transport->setRecipients($recipients);
-        $this->transport->setSubject($this->subject);
-        $this->transport->setHeaders($this->headers);
+        $this->transport->setParam('to', $recipients);
+        $this->transport->setParam('subject', $this->subject);
+        $this->transport->setParam('headers', $this->headers);
         $this->transport->setContent($mailbody);
         return $this->transport->transmit();
     }
