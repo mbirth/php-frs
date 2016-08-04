@@ -108,7 +108,9 @@ if (!$tpl_done && $sm->hasSessionToken()) {
                     );
                     $fd = new FieldDefinition($action);
                     $fd->setPlaceholders($placeholders);
-                    $fd->setFieldValues($_SESSION[$skey]);
+                    if (isset($_SESSION[$skey])) {
+                        $fd->setFieldValues($_SESSION[$skey]);
+                    }
 
                     $by_group = $fd->getGroups();
 
