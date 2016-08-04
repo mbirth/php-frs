@@ -58,20 +58,6 @@ class MailOutput extends GenericOutput
     }
 
     /**
-     * Returns a header section (as string) of all currently set headers.
-     *
-     * @return string Header section.
-     */
-    public function getHeaders()
-    {
-        $all_headers = '';
-        foreach ($this->headers as $key=>$value) {
-            $all_headers .= $key . ': ' . $value . "\r\n";
-        }
-        return $all_headers;
-    }
-
-    /**
      * Sets mail headers. If headers contain a Subject: line, the subject is set from that.
      *
      * @param string $headers All mail headers separated by newlines (CRLF or LF).
@@ -100,7 +86,7 @@ class MailOutput extends GenericOutput
         // TODO: Check if any recipients in the first place
         $this->transport->setRecipients($recipients);
         $this->transport->setSubject($this->subject);
-        $this->transport->setHeaders($this->getHeaders());
+        $this->transport->setHeaders($this->headers);
         $this->transport->setContent($mailbody);
         return $this->transport->send();
     }

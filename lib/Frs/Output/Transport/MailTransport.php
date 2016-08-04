@@ -26,7 +26,10 @@ class MailTransport implements TransportInterface
 
     public function setHeaders($headers)
     {
-        $this->headers = $headers;
+        $this->headers = '';
+        foreach ($headers as $key=>$value) {
+            $this->headers .= $key . ': ' . $value . "\r\n";
+        }
     }
 
     public function transmit()
