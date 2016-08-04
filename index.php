@@ -6,8 +6,10 @@ use \Frs\FieldDefinition;
 use \Frs\SessionManager;
 use \Frs\Output\HtmlOutput;
 use \Frs\Output\MailOutput;
+use \Frs\Output\Transport\StdoutTransport;
 
-$ho = new HtmlOutput(dirname(__FILE__) . '/templates');
+$stdout = new StdoutTransport();
+$ho = new HtmlOutput($stdout, dirname(__FILE__) . '/templates');
 $ho->setTemplateVar('session_time_left', 0);
 
 $sm = new SessionManager();
@@ -125,4 +127,4 @@ if (!$tpl_done && $sm->hasSessionToken()) {
     $ho->setTemplate('index_html');
 }
 
-$ho->sendOutputToStdout();
+$ho->send();

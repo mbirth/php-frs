@@ -2,8 +2,9 @@
 
 namespace Frs\Output;
 
-class GenericOutput
+class GenericOutput implements OutputInterface
 {
+    private $transport;
     private $templatesPath;
     private $partialsPath;
     private $templateEngine;
@@ -13,11 +14,13 @@ class GenericOutput
     /**
      * Creates new output object for generic output.
      *
+     * @param \Frs\Output\Transport\TransportInterface Transport to send output to
      * @param string $templatesPath Path to templates. Must be a folder, no slash at end!
      * @param string $partialsPath Path to partials (relative to $templatesPath). Must be a folder, no slash at end!
      */
-    public function __construct($templatesPath = 'templates', $partialsPath = 'partials')
+    public function __construct(\Frs\Output\Transport\TransportInterface $transport, $templatesPath = 'templates', $partialsPath = 'partials')
     {
+        $this->transport = $transport;
         $this->templatesPath  = $templatesPath;
         $this->partialsPath   = $templatesPath . DIRECTORY_SEPARATOR . $partialsPath;
         $this->templateEngine = new \Mustache_Engine(array(
@@ -52,5 +55,11 @@ class GenericOutput
     public function getRenderedOutput()
     {
         return $this->template->render($this->templateVars);
+    }
+
+    public function send()
+    {
+        $this->transport->setContent($this->getRenderedOutput());
+        $this->transport->transmit();
     }
 }
