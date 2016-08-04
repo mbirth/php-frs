@@ -88,6 +88,6 @@ class MailOutput extends GenericOutput
         $this->transport->setSubject($this->subject);
         $this->transport->setHeaders($this->headers);
         $this->transport->setContent($mailbody);
-        return $this->transport->send();
+        return $this->transport->transmit();
     }
 }

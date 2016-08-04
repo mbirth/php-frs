@@ -4,12 +4,12 @@ namespace Frs\Output;
 
 class GenericOutput implements OutputInterface
 {
-    private $transport;
     private $templatesPath;
     private $partialsPath;
     private $templateEngine;
     private $template;
     private $templateVars = array();
+    protected $transport;
 
     /**
      * Creates new output object for generic output.
