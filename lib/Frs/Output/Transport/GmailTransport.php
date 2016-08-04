@@ -35,10 +35,35 @@ class GmailTransport implements TransportInterface
         $this->headers = $headers;
     }
 
+    /**
+     * Base64 encoding with URL/filename safe characters.
+     * Taken from http://php.net/manual/en/function.base64-encode.php#103849
+     *
+     * @param string $data Date to encode
+     * @return string Encoded data
+     */
+    private function b64url_encode($data)
+    {
+        return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+    }
+
     public function transmit()
     {
-        $optParams = array();
+        $mime = new Mail_mime();
+        $mime->addTo($this->recipients);
+        $mime->setHTMLBody($this->content);
+        $mime->setSubject($this->subject);
+
+        $message_body = $mime->getMessage(null, null, $this->headers);
+        $encoded_message = $this->b64url_encode($message_body);
+
         $postBody = new Google_Service_Gmail_Message();
-        $this->gms->users_messages->send('me', $postBody, $optParams);
+        $postBody->setRaw($encoded_message);
+
+        $msg = $this->gms->users_messages->send('me', $postBody);
+        if ($msg->getId()) {
+            return true;
+        }
+        return false;
     }
 }

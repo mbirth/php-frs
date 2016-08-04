@@ -6,6 +6,7 @@
         "mustache/mustache": "~2.10",
         "bower-asset/material-design-lite": "*",
         "npm-asset/mdl-ext": "*",
+        "pear/mail_mime": "^1.10",
         "google/apiclient": "^2.0.0@RC"
     },
     "require-dev": {
