@@ -14,5 +14,6 @@ class StdoutTransport implements TransportInterface
     public function transmit()
     {
         echo $this->content;
+        return true;
     }
 }
