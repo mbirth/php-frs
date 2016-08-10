@@ -13,7 +13,7 @@ Content-Type: text/html; charset=utf-8
 <p>
 <div itemscope itemtype="http://schema.org/FlightReservation">
     Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
-  <link itemprop="reservationStatus" href="{{reservationStatus.value}}"/>
+  <link itemprop="reservationStatus" href="http://schema.org/{{reservationStatus.value}}"/>
   <link itemprop="url" href="{{url.value}}"/>
   <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="{{underName_name.value}}"/>
