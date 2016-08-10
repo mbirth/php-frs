@@ -1,0 +1,71 @@
+Return-Path: {{user.email}}
+From: Fake Reservation System <{{user.email}}>
+Subject: [FRS] {{form_type_uc}} Reservation
+Date: {{email_date}}
+X-Mailer: FRS/1.0
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+<p>
+<h1>YOUR RESERVATION DETAILS</h1>
+<p>
+<div itemscope itemtype="http://schema.org/TrainReservation">
+    Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
+  <link itemprop="reservationStatus" href="http://schema.org/Reservation{{reservationStatus.value}}"/>
+  <link itemprop="url" href="{{url.value}}"/>
+  <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{underName_name.value}}"/>
+      <meta itemprop="email" content="{{underName_email.value}}"/>
+  </div>
+  <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{bookingAgent_name.value}}"/>
+      <link itemprop="url" href="{{bookingAgent_url.value}}"/>
+  </div>
+  <meta itemprop="bookingTime" content="{{bookingTime.value}}"/>
+  <link itemprop="cancelReservationUrl" href="{{cancelReservationUrl.value}}"/>
+  <link itemprop="checkinUrl" href="{{checkinUrl.value}}"/>
+  <link itemprop="confirmReservationUrl" href="{{confirmReservationUrl.value}}"/>
+  <meta itemprop="modifiedTime" content="{{modifiedTime.value}}"/>
+  <link itemprop="modifyReservationUrl" href="{{modifyReservationUrl.value}}"/>
+  <div itemprop="programMembership" itemscope itemtype="http://schema.org/ProgramMembership">
+      <meta itemprop="memberNumber" content="{{programMembership_memberNumber.value}}"/>
+      <meta itemprop="program" content="{{programMembership_program.value}}"/>
+  </div>
+  <div itemprop="reservationFor" itemscope itemtype="http://schema.org/TrainTrip">
+    <meta itemprop="arrivalPlatform" content="{{reservationFor_arrivalPlatform.value}}"/>
+    <div itemprop="arrivalStation" itemscope itemtype="http://schema.org/TrainStation">
+        <meta itemprop="name" content="{{reservationFor_arrivalStation_name.value}}"/>
+    </div>
+    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value}}"/>
+    <meta itemprop="departurePlatform" content="{{reservationFor_departurePlatform.value}}"/>
+    <div itemprop="departureStation" itemscope itemtype="http://schema.org/TrainStation">
+        <meta itemprop="name" content="{{reservationFor_departureStation_name.value}}"/>
+    </div>
+    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value}}"/>
+    <meta itemprop="trainCode" content="{{reservationFor_trainCode.value}}"/>
+    <meta itemprop="trainCompany" content="{{reservationFor_trainCompany.value}}"/>
+    <meta itemprop="trainName" content="{{reservationFor_trainName.value}}"/>
+    <meta itemprop="trainNumber" content="{{reservationFor_trainNumber.value}}"/>
+  </div>
+  <div itemprop="reservedTicket" itemscope itemtype="http://schema.org/Ticket">
+    <meta itemprop="additionalTicketText" content="{{reservedTicket_additionalTicketText.value}}"/>
+    <link itemprop="downloadUrl" href="{{reservedTicket_downloadUrl.value}}"/>
+    Price: <span itemprop="price">{{reservedTicket_price.value}}</span> <span itemprop="priceCurrency">{{reservedTicket_priceCurrency.value}}</span>
+    <link itemprop="printUrl" href="{{reservedTicket_printUrl.value}}"/>
+    <div itemprop="ticketedSeat" itemscope itemtype="http://schema.org/Seat">
+      <meta itemprop="seatingType" content="{{reservedTicket_ticketedSeat_seatingType.value}}"/>
+      <meta itemprop="seatRow" content="{{reservedTicket_ticketedSeat_seatRow.value}}"/>
+      <meta itemprop="seatNumber" content="{{reservedTicket_ticketedSeat_seatNumber.value}}"/>
+    </div>
+    <meta itemprop="ticketNumber" content="{{reservedTicket_ticketNumber.value}}"/>
+    <meta itemprop="ticketToken" content="{{reservedTicket_ticketToken.value}}"/>
+    <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{reservedTicket_underName_name.value}}"/>
+    </div>
+  </div>
+</div>
+</p>
+</body>
+</html>
