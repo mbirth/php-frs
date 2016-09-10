@@ -1,4 +1,3 @@
-Return-Path: {{user.email}}
 From: Fake Reservation System <{{user.email}}>
 Subject: [FRS] {{form_type_uc}} Reservation
 Date: {{email_date}}
@@ -10,6 +9,7 @@ Content-Type: text/html; charset=utf-8
 <body>
 <p>
 <h1>YOUR RESERVATION DETAILS</h1>
+</p>
 <p>
 <div itemscope itemtype="http://schema.org/EventReservation">
     Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>

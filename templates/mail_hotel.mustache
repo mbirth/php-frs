@@ -10,6 +10,7 @@ Content-Type: text/html; charset=utf-8
 <body>
 <p>
 <h1>YOUR RESERVATION DETAILS</h1>
+</p>
 <p>
 <div itemscope itemtype="http://schema.org/LodgingReservation">
   Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
@@ -38,7 +39,7 @@ Content-Type: text/html; charset=utf-8
   Price: <span itemprop="price">{{price.value}}</span> <span itemprop="priceCurrency">{{priceCurrency.value}}</span><br/>
   <br/>
   Booked with:<br/>
-  <meta itemprop="bookingTime" content="{{bookingTime.value}}"/>
+  <meta itemprop="bookingTime" content="{{bookingTime.value_iso8601}}"/>
   <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
     <span itemprop="name">{{bookingAgent_name.value}}</span><br/>
     <a itemprop="url" href="{{bookingAgent_url.value}}">{{bookingAgent_url.value}}</a><br/>

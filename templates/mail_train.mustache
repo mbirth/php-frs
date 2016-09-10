@@ -10,6 +10,7 @@ Content-Type: text/html; charset=utf-8
 <body>
 <p>
 <h1>YOUR RESERVATION DETAILS</h1>
+</p>
 <p>
 <div itemscope itemtype="http://schema.org/TrainReservation">
     Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
@@ -23,11 +24,11 @@ Content-Type: text/html; charset=utf-8
       <meta itemprop="name" content="{{bookingAgent_name.value}}"/>
       <link itemprop="url" href="{{bookingAgent_url.value}}"/>
   </div>
-  <meta itemprop="bookingTime" content="{{bookingTime.value}}"/>
+  <meta itemprop="bookingTime" content="{{bookingTime.value_iso8601}}"/>
   <link itemprop="cancelReservationUrl" href="{{cancelReservationUrl.value}}"/>
   <link itemprop="checkinUrl" href="{{checkinUrl.value}}"/>
   <link itemprop="confirmReservationUrl" href="{{confirmReservationUrl.value}}"/>
-  <meta itemprop="modifiedTime" content="{{modifiedTime.value}}"/>
+  <meta itemprop="modifiedTime" content="{{modifiedTime.value_iso8601}}"/>
   <link itemprop="modifyReservationUrl" href="{{modifyReservationUrl.value}}"/>
   <div itemprop="programMembership" itemscope itemtype="http://schema.org/ProgramMembership">
       <meta itemprop="memberNumber" content="{{programMembership_memberNumber.value}}"/>
@@ -38,12 +39,12 @@ Content-Type: text/html; charset=utf-8
     <div itemprop="arrivalStation" itemscope itemtype="http://schema.org/TrainStation">
         <meta itemprop="name" content="{{reservationFor_arrivalStation_name.value}}"/>
     </div>
-    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value}}"/>
+    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value_iso8601}}"/>
     <meta itemprop="departurePlatform" content="{{reservationFor_departurePlatform.value}}"/>
     <div itemprop="departureStation" itemscope itemtype="http://schema.org/TrainStation">
         <meta itemprop="name" content="{{reservationFor_departureStation_name.value}}"/>
     </div>
-    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value}}"/>
+    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value_iso8601}}"/>
     <meta itemprop="trainCode" content="{{reservationFor_trainCode.value}}"/>
     <meta itemprop="trainCompany" content="{{reservationFor_trainCompany.value}}"/>
     <meta itemprop="trainName" content="{{reservationFor_trainName.value}}"/>
