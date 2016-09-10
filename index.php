@@ -97,7 +97,7 @@ if (!$tpl_done && $sm->hasSessionToken()) {
                 }
                 break;
             default:
-                if (in_array($action, array('event', 'flight', 'hotel', 'restaurant', 'rentalcar', 'train'))) {
+                if (in_array($action, array('event', 'flight', 'hotel', 'restaurant', 'rentalcar', 'train', 'bus'))) {
                     $ho->setTemplate($action . '_html');
                     $tpl_done = true;
                     $skey = 'form_' . $action;
