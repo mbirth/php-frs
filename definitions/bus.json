@@ -1,0 +1,229 @@
+{
+    "groups": {
+        "0": "Ride Information",
+        "4": "Ticket",
+        "5": "Booking Information",
+        "6": "Program Membership",
+        "7": "Booking Agency",
+        "8": "Hotlinks",
+        "9": "Metadata"
+    },
+    "fields": {
+        "bookingAgent_name": {
+            "title": "Name",
+            "type": "text",
+            "required": false,
+            "group": 7,
+            "short": true
+        },
+        "bookingAgent_url": {
+            "title": "URL",
+            "type": "url",
+            "required": false,
+            "group": 7
+        },
+        "bookingTime": {
+            "title": "Booking Date",
+            "type": "datetime",
+            "required": false,
+            "group": 7
+        },
+        "cancelReservationUrl": {
+            "title": "Cancel URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        },
+        "checkinUrl": {
+            "title": "Check in URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        },
+        "confirmReservationUrl": {
+            "title": "Confirm URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        },
+        "modifiedTime": {
+            "title": "Modified Time",
+            "type": "datetime",
+            "required": false,
+            "group": 9
+        },
+        "modifyReservationUrl": {
+            "title": "Confirm URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        },
+        "programMembership_program": {
+            "title": "Name of Program",
+            "type": "text",
+            "required": false,
+            "group": 6,
+            "short": true
+        },
+        "programMembership_memberNumber": {
+            "title": "Member No.",
+            "type": "text",
+            "required": false,
+            "group": 6,
+            "short": true
+        },
+        "reservationFor_departureTime": {
+            "title": "Departure Time",
+            "type": "datetime",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_departureBusStation_name": {
+            "title": "Departure Station Name",
+            "type": "text",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_arrivalTime": {
+            "title": "Arrival Time",
+            "type": "datetime",
+            "required": true,
+            "group": 0
+        },
+        "reservationFor_arrivalBusStation_name": {
+            "title": "Arrival Station Name",
+            "type": "text",
+            "required": true,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_provider": {
+            "title": "Bus Operator",
+            "type": "text",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_busName": {
+            "title": "Bus name",
+            "type": "text",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "reservationFor_busNumber": {
+            "title": "Bus number",
+            "type": "text",
+            "required": false,
+            "group": 0,
+            "short": true
+        },
+        "reservationNumber": {
+            "title": "Reservation No.",
+            "type": "text",
+            "required": true,
+            "group": 5,
+            "short": true
+        },
+        "reservationStatus": {
+            "title": "Status",
+            "type": "status",
+            "required": true,
+            "group": 5,
+            "short": true
+        },
+        "reservedTicket_additionalTicketText": {
+            "title": "Additional information about ticket",
+            "type": "text",
+            "required": false,
+            "group": 4
+        },
+        "reservedTicket_downloadUrl": {
+            "title": "Ticket Download URL",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "reservedTicket_price": {
+            "title": "Price",
+            "type": "decimal",
+            "required": false,
+            "group": 5,
+            "short": true
+        },
+        "reservedTicket_priceCurrency": {
+            "title": "Currency",
+            "type": "currency",
+            "required": false,
+            "group": 5,
+            "short": true
+        },
+        "reservedTicket_printUrl": {
+            "title": "Ticket Print URL",
+            "type": "url",
+            "required": false,
+            "group": 4
+        },
+        "reservedTicket_ticketedSeat_seatingType": {
+            "title": "Seat: Type/Class",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "reservedTicket_ticketedSeat_seatRow": {
+            "title": "Seat: Row",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "reservedTicket_ticketedSeat_seatNumber": {
+            "title": "Seat: Number",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "short": true
+        },
+        "reservedTicket_ticketNumber": {
+            "title": "Ticket ID",
+            "type": "text",
+            "required": false,
+            "group": 4
+        },
+        "reservedTicket_ticketToken": {
+            "title": "Ticket Barcode",
+            "type": "barcode",
+            "required": false,
+            "group": 4
+        },
+        "reservedTicket_underName_name": {
+            "title": "Name on Ticket",
+            "type": "text",
+            "required": false,
+            "group": 4,
+            "default": "USER_NAME"
+        },
+        "underName_name": {
+            "title": "Name on Reservation",
+            "type": "text",
+            "required": false,
+            "group": 5,
+            "default": "USER_NAME"
+        },
+        "underName_email": {
+            "title": "Email address",
+            "type": "email",
+            "required": false,
+            "group": 5,
+            "default": "USER_EMAIL"
+        },
+        "url": {
+            "title": "Booking URL",
+            "type": "url",
+            "required": false,
+            "group": 8
+        }
+    }
+}
