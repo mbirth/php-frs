@@ -7,7 +7,7 @@ use \Frs\SessionManager;
 use \Frs\Output\HtmlOutput;
 use \Frs\Output\MailOutput;
 use \Frs\Output\Transport\StdoutTransport;
-use \Frs\Output\Transport\GmailTransport;
+use \Frs\Output\Transport\GScriptTransport;
 
 $stdout = new StdoutTransport();
 $ho = new HtmlOutput($stdout, dirname(__FILE__) . '/templates');
@@ -71,7 +71,8 @@ if (!$tpl_done && $sm->hasSessionToken()) {
         switch ($action) {
             case 'send':
                 echo 'This would send the mail...';
-                $mt = new GmailTransport($sm);
+                //$mt = new MailTransport($sm);
+                $mt = new GScriptTransport();
                 $mo = new MailOutput($mt, dirname(__FILE__) . '/templates');
                 $form_type = $_REQUEST['form_type'];
                 $mo->setTemplate('mail_' . $form_type);
