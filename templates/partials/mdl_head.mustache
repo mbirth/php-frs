@@ -5,22 +5,15 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        {{# user.name_first}}
-        <span class="mdl-navigation__link mdl-color-text--grey-800">Hello, {{user.name_first}}!<span id="session_expires"></span></span>
-        {{/ user.name_first}}
-        <button id="frs-menu-top" class="mdl-button mdl-js-button mdl-button--icon">
+        <span class="mdl-navigation__link mdl-color-text--grey-800">Hello, User!</span>
+        <!--button id="frs-menu-top" class="mdl-button mdl-js-button mdl-button--icon">
             <span class="material-icons">more_vert</span>
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="frs-menu-top">
             <li id="frs-menuitem-logout" class="mdl-menu__item" onclick="location.href='?action=logout';">Logout</li>
-        </ul>
+        </ul-->
       </nav>
     </div>
   </header>
   <div class="frs-ribbon"></div>
   <main class="frs-main mdl-layout__content">
-
-    <script>
-        var seconds_left = {{session_time_left}};
-    </script>
-    <script src="js/session.js"></script>
