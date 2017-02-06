@@ -235,15 +235,13 @@
             "title": "Name on Reservation",
             "type": "text",
             "required": true,
-            "group": 5,
-            "default": "USER_NAME"
+            "group": 5
         },
         "underName_email": {
             "title": "Email address",
             "type": "email",
             "required": false,
-            "group": 5,
-            "default": "USER_EMAIL"
+            "group": 5
         },
         "url": {
             "title": "Booking URL",

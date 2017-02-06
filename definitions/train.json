@@ -223,22 +223,19 @@
             "title": "Name on Ticket",
             "type": "text",
             "required": false,
-            "group": 4,
-            "default": "USER_NAME"
+            "group": 4
         },
         "underName_name": {
             "title": "Name on Reservation",
             "type": "text",
             "required": false,
-            "group": 5,
-            "default": "USER_NAME"
+            "group": 5
         },
         "underName_email": {
             "title": "Email address",
             "type": "email",
             "required": false,
-            "group": 5,
-            "default": "USER_EMAIL"
+            "group": 5
         },
         "url": {
             "title": "Booking URL",

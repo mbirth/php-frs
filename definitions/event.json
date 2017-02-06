@@ -260,15 +260,13 @@
             "title": "Ticket holder",
             "type": "text",
             "required": true,
-            "group": 3,
-            "default": "USER_NAME"
+            "group": 3
         },
         "underName_email": {
             "title": "Email address",
             "type": "email",
             "required": false,
-            "group": 3,
-            "default": "USER_EMAIL"
+            "group": 3
         },
         "url": {
             "title": "Reservation URL",

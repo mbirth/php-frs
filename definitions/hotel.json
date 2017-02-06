@@ -187,15 +187,13 @@
             "title": "Name on Reservation",
             "type": "text",
             "required": true,
-            "group": 2,
-            "default": "USER_NAME"
+            "group": 2
         },
         "underName_email": {
             "title": "Email address",
             "type": "email",
             "required": false,
-            "group": 2,
-            "default": "USER_EMAIL"
+            "group": 2
         },
         "url": {
             "title": "Booking URL",
