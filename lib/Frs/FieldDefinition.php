@@ -39,14 +39,14 @@ class FieldDefinition
     {
         $this->processPlaceholders();
         $byGroup = array();
-        foreach ($this->fieldData['groups'] as $id=>$group) {
+        foreach ($this->fieldData['groups'] as $id => $group) {
             $byGroup[$group] = array(
                 'group_name' => $group,
                 'fields'     => array(),
             );
         }
 
-        foreach ($this->fieldData['fields'] as $key=>$meta) {
+        foreach ($this->fieldData['fields'] as $key => $meta) {
             $groupName = $this->fieldData['groups'][$meta['group']];
             $byGroup[$groupName]['fields'][] = $meta;
         }
@@ -110,7 +110,7 @@ class FieldDefinition
 
     private function prepareFields()
     {
-        foreach ($this->fieldData['fields'] as $key=>$meta) {
+        foreach ($this->fieldData['fields'] as $key => $meta) {
             $meta['field_id']   = $key;
             $groupName          = $this->fieldData['groups'][$meta['group']];
             $meta['group_name'] = $groupName;
@@ -151,7 +151,7 @@ class FieldDefinition
 
     public function processPlaceholders()
     {
-        foreach ($this->fieldData['fields'] as $key=>$meta) {
+        foreach ($this->fieldData['fields'] as $key => $meta) {
             if (isset($this->placeholders[$meta['value']])) {
                 $meta['value'] = $this->placeholders[$meta['value']];
             }
@@ -166,7 +166,7 @@ class FieldDefinition
      */
     public function setFieldValues($values = array())
     {
-        foreach ($this->fieldData['fields'] as $key=>$meta) {
+        foreach ($this->fieldData['fields'] as $key => $meta) {
             // Assign session value if set, or use default if set
             if (isset($values[$key])) {
                 $meta['value'] = $values[$key];
