@@ -1,5 +1,5 @@
 From: Fake Reservation System <{{user.email}}>
-Subject: [FRS] {{form_type_uc}} Reservation
+Subject: [FRS] {{reservationFor_name.value}} - {{reservationFor_startDate.value_human}} - {{form_type_uc}} Reservation
 Date: {{email_date}}
 X-Mailer: FRS/1.0
 MIME-Version: 1.0
@@ -30,6 +30,7 @@ Content-Type: text/html; charset=utf-8
   </div>
   <div itemprop="reservationFor" itemscope itemtype="http://schema.org/{{reservationFor_type.value}}">
     Event: <strong><span itemprop="name">{{reservationFor_name.value}}</span></strong><br/>
+    {{reservationFor_description.value}}<br/>
     (<a itemprop="url" href="{{reservationFor_url.value}}">{{reservationFor_url.value}}</a>)<br/>
     <link itemprop="image" href="{{reservationFor_image.value}}"/>
     <div itemprop="performer" itemscope itemtype="http://schema.org/Person">
