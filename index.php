@@ -30,9 +30,8 @@ switch ($action) {
         $mo = new MailOutput($mt, dirname(__FILE__) . '/templates');
         $form_type = $_REQUEST['form_type'];
         $mo->setTemplate('mail_' . $form_type);
-        $skey = 'form_' . $form_type;
         $fd = new FieldDefinition($form_type);
-        $fd->setFieldValues($_SESSION[$skey]);
+        $fd->setFieldValues($_POST);
         $fieldData = $fd->getFieldData();
         $fields = $fieldData['fields'];
 
@@ -43,7 +42,6 @@ switch ($action) {
         $mo->setTemplateVar('form_type', $form_type);
         $mo->setTemplateVar('form_type_uc', ucwords($form_type));
         $mo->setSubject('[FRS] ' . ucwords($form_type) . ' Reservation');
-        $mo->addRecipient($data['user']['email'], $data['user']['name_first'] . ' ' . $data['user']['name_last']);
         $mail_sent = $mo->send();
         if ($mail_sent) {
             $ho->setTemplate('mail_sent_html');
