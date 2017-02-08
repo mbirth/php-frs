@@ -30,12 +30,12 @@ Content-Type: text/html; charset=utf-8
   </div>
   <div itemprop="reservationFor" itemscope itemtype="http://schema.org/{{reservationFor_type.value}}">
     Event: <strong><span itemprop="name">{{reservationFor_name.value}}</span></strong><br/>
-    (<a itemprop="url">{{reservationFor_url.value}}</a>)<br/>
+    (<a itemprop="url" href="{{reservationFor_url.value}}">{{reservationFor_url.value}}</a>)<br/>
     <link itemprop="image" href="{{reservationFor_image.value}}"/>
     <div itemprop="performer" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">{{reservationFor_performer_name.value}}</span><br/>
         <link itemprop="image" href="{{reservationFor_performer_image.value}}"/>
-        <a itemprop="url">{{reservationFor_performer_url.value}}</a><br/>
+        <a itemprop="url" href="{{reservationFor_performer_url.value}}">{{reservationFor_performer_url.value}}</a><br/>
     </div>
 
     <div itemprop="location" itemscope itemtype="http://schema.org/Place">
