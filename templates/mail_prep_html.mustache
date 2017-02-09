@@ -1,0 +1,36 @@
+{{> html_head}}
+{{> mdl_head}}
+{{> mdl_content_head}}
+
+<div class="frs-crumbs mdl-color-text--grey-500">
+  <a href="./">Fake Reservation System</a> &gt; Send Reservation
+</div>
+
+<h3>Sending Mail</h3>
+
+<p>
+This is what will be sent to your account:
+</p>
+
+<p>
+<form method="post" action="{{ gscript_url }}">
+  <input type="hidden" name="return_url" value="{{ return_url }}"/>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
+    <input class="mdl-textfield__input" type="text" required id="mail_subject" name="subject" value="{{ mail_subject }}"/>
+    <label class="mdl-textfield__label" for="mail_subject">Subject</label>
+    <span class="mdl-textfield__error">Please input a value!</span>
+  </div><br/>
+
+  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+    <textarea class="mdl-textfield__input" type="text" id="mail_body" rows="20" name="body">{{ mail_body }}</textarea>
+    <label class="mdl-textfield__label" for="mail_body">Body</label>
+  </div><br/>
+
+  <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send</button>
+</form>
+</p>
+
+{{> mdl_content_foot}}
+{{> mdl_foot}}
+{{> html_foot}}

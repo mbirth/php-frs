@@ -38,6 +38,16 @@ class MailOutput extends GenericOutput
     }
 
     /**
+     * Gets the currently set subject for the mail.
+     *
+     * @return string Subject currently set.
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
      * Sets the given header $key to $value. A Subject: header sets
      * the subject via $this->setSubject(). A To: header is ignored.
      *
