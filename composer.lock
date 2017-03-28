@@ -95,49 +95,49 @@
         },
         {
             "name": "npm-asset/mdl-ext",
-            "version": "0.15.2",
+            "version": "0.17.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/mdl-ext/-/mdl-ext-0.15.2.tgz",
+                "url": "https://registry.npmjs.org/mdl-ext/-/mdl-ext-0.17.1.tgz",
                 "reference": null,
-                "shasum": "cf2128e59623031e0bc9951589aacfe5c4aeaaed"
+                "shasum": "f3d8872c552c2dd900f7075700bd4e16ff4a59e3"
             },
             "require-dev": {
-                "npm-asset/autoprefixer": "6.7.2",
-                "npm-asset/babel-cli": "6.22.2",
-                "npm-asset/babel-core": "6.22.1",
+                "npm-asset/autoprefixer": "6.7.6",
+                "npm-asset/babel-cli": "6.23.0",
+                "npm-asset/babel-core": "6.23.1",
                 "npm-asset/babel-eslint": "7.1.1",
-                "npm-asset/babel-loader": "6.2.10",
+                "npm-asset/babel-loader": "6.3.2",
                 "npm-asset/babel-plugin-add-module-exports": "0.2.1",
                 "npm-asset/babel-plugin-syntax-decorators": "6.13.0",
                 "npm-asset/babel-plugin-transform-decorators-legacy": "1.3.4",
-                "npm-asset/babel-plugin-transform-object-rest-spread": "6.22.0",
-                "npm-asset/babel-plugin-transform-runtime": "6.22.0",
-                "npm-asset/babel-polyfill": "6.22.0",
+                "npm-asset/babel-plugin-transform-object-rest-spread": "6.23.0",
+                "npm-asset/babel-plugin-transform-runtime": "6.23.0",
+                "npm-asset/babel-polyfill": "6.23.0",
                 "npm-asset/babel-preset-es2015": "6.22.0",
                 "npm-asset/babel-preset-stage-0": "6.22.0",
-                "npm-asset/babel-register": "6.22.0",
-                "npm-asset/babel-runtime": "6.22.0",
+                "npm-asset/babel-register": "6.23.0",
+                "npm-asset/babel-runtime": "6.23.0",
                 "npm-asset/chai": "3.5.0",
                 "npm-asset/chalk": "1.1.3",
                 "npm-asset/codecov.io": "0.1.6",
-                "npm-asset/commitizen": "2.9.5",
-                "npm-asset/css-loader": "0.26.1",
-                "npm-asset/cz-conventional-changelog": "1.2.0",
-                "npm-asset/dialog-polyfill": "0.4.5",
+                "npm-asset/commitizen": "2.9.6",
+                "npm-asset/css-loader": "0.26.2",
+                "npm-asset/cz-conventional-changelog": "2.0.0",
+                "npm-asset/dialog-polyfill": "0.4.7",
                 "npm-asset/doctrine": "2.0.0",
                 "npm-asset/eq.js": "1.9.0",
                 "npm-asset/es6-promise": "4.0.5",
-                "npm-asset/eslint": "3.14.1",
-                "npm-asset/eslint-loader": "1.6.1",
+                "npm-asset/eslint": "3.16.1",
+                "npm-asset/eslint-loader": "1.6.3",
                 "npm-asset/extract-text-webpack-plugin": "1.0.1",
-                "npm-asset/file-loader": "0.10.0",
+                "npm-asset/file-loader": "0.10.1",
                 "npm-asset/gulp": "3.9.1",
-                "npm-asset/gulp-git": "1.13.0",
-                "npm-asset/gulp-posthtml": "1.5.2",
+                "npm-asset/gulp-git": "2.0.0",
+                "npm-asset/gulp-posthtml": "2.0.0",
                 "npm-asset/ignore-styles": "5.0.1",
                 "npm-asset/istanbul": "1.0.0-alpha.2",
-                "npm-asset/jsdom": "9.9.1",
+                "npm-asset/jsdom": "9.11.0",
                 "npm-asset/jsdomify": "2.1.0",
                 "npm-asset/material-design-lite": "1.3.0",
                 "npm-asset/mocha": "3.2.0",
@@ -145,20 +145,20 @@
                 "npm-asset/node-sass": "4.5.0",
                 "npm-asset/null-loader": "0.1.1",
                 "npm-asset/object-assign": "4.1.1",
-                "npm-asset/postcss-loader": "1.2.2",
+                "npm-asset/postcss-loader": "1.3.2",
                 "npm-asset/posthtml-include": "1.1.0",
                 "npm-asset/require-uncached": "1.0.3",
-                "npm-asset/resolve-url-loader": "1.6.1",
-                "npm-asset/rimraf": "2.5.4",
+                "npm-asset/resolve-url-loader": "2.0.0",
+                "npm-asset/rimraf": "2.6.1",
                 "npm-asset/roboto-fontface": "0.7.0",
                 "npm-asset/sass-loader": "4.1.1",
                 "npm-asset/semantic-release": "6.3.5",
                 "npm-asset/sinon": "1.17.7",
-                "npm-asset/style-loader": "0.13.1",
-                "npm-asset/stylelint": "7.8.0",
+                "npm-asset/style-loader": "0.13.2",
+                "npm-asset/stylelint": "7.9.0",
                 "npm-asset/stylelint-config-standard": "16.0.0",
-                "npm-asset/stylelint-webpack-plugin": "0.5.1",
-                "npm-asset/url-loader": "0.5.7",
+                "npm-asset/stylelint-webpack-plugin": "0.7.0",
+                "npm-asset/url-loader": "0.5.8",
                 "npm-asset/webpack": "1.14.0",
                 "npm-asset/yargs": "6.6.0"
             },
@@ -182,7 +182,7 @@
                 "npm-asset-scripts": {
                     "dev": "webpack --progress --colors --watch --mode=dev",
                     "stylelint": "stylelint './src/**/*.s?(a|c)ss' --syntax scss",
-                    "eslint": "eslint ./src",
+                    "eslint": "eslint ./src ./test",
                     "lint": "npm run stylelint && npm run eslint",
                     "test": "mocha  -w --opts ./mocha.opts './test/**/*.spec.js'",
                     "test:single": "mocha  -w --opts ./mocha.opts",
@@ -510,27 +510,27 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.6.2",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb"
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/6c52c2722f8460122f96f86346600e1077ce22cb",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-                "sebastian/comparator": "^1.1",
-                "sebastian/recursion-context": "^1.0|^2.0"
+                "sebastian/comparator": "^1.1|^2.0",
+                "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.0",
+                "phpspec/phpspec": "^2.5|^3.2",
                 "phpunit/phpunit": "^4.8 || ^5.6.5"
             },
             "type": "library",
@@ -569,7 +569,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-11-21T14:58:47+00:00"
+            "time": "2017-03-02T20:05:34+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -723,25 +723,30 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4|~5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -763,20 +768,20 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2016-05-12T18:03:57+00:00"
+            "time": "2017-02-26T11:10:40+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.9",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
                 "shasum": ""
             },
             "require": {
@@ -812,7 +817,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2016-11-15T14:06:22+00:00"
+            "time": "2017-02-27T10:12:30+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -1228,16 +1233,16 @@
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "1.0.2",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
-                "reference": "913401df809e99e4f47b27cdd781f4a258d58791"
+                "reference": "b19cc3298482a335a95f3016d2f8a6950f0fbcd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/913401df809e99e4f47b27cdd781f4a258d58791",
-                "reference": "913401df809e99e4f47b27cdd781f4a258d58791",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/b19cc3298482a335a95f3016d2f8a6950f0fbcd7",
+                "reference": "b19cc3298482a335a95f3016d2f8a6950f0fbcd7",
                 "shasum": ""
             },
             "require": {
@@ -1277,7 +1282,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2015-11-11T19:50:13+00:00"
+            "time": "2016-10-03T07:41:43+00:00"
         },
         {
             "name": "sebastian/version",
@@ -1316,16 +1321,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.3",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
+                "reference": "093e416ad096355149e265ea2e4cc1f9ee40ab1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/093e416ad096355149e265ea2e4cc1f9ee40ab1a",
+                "reference": "093e416ad096355149e265ea2e4cc1f9ee40ab1a",
                 "shasum": ""
             },
             "require": {
@@ -1367,7 +1372,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-21T17:06:35+00:00"
+            "time": "2017-03-07T16:47:02+00:00"
         },
         {
             "name": "webmozart/assert",
