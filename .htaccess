@@ -3,4 +3,10 @@
 </Files>
 
 RewriteEngine on
-RewriteRule ^([^./]+)/?$ index.php?action=$1 [L,NC]
+
+# https://wiki.uberspace.de/webserver:htaccess
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^([^./]+)/?$ /index.php?action=$1 [L,NC]
