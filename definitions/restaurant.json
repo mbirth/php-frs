@@ -157,6 +157,12 @@
             "group": 2,
             "short": true
         },
+        "startTime": {
+            "title": "Start time",
+            "type": "datetime",
+            "required": true,
+            "group": 1
+        },
         "underName_name": {
             "title": "Name on Reservation",
             "type": "text",

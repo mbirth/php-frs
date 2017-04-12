@@ -1,0 +1,62 @@
+From: Fake Reservation System <{{user.email}}>
+Subject: [FRS] {{reservationFor_name.value}} - {{startTime.value_human}} - {{form_type_uc}} Reservation
+Date: {{email_date}}
+X-Mailer: FRS/1.0
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+<p>
+<h1>YOUR RESERVATION DETAILS</h1>
+</p>
+<p>
+<div itemscope itemtype="http://schema.org/FoodEstablishmentReservation">
+    Reservation number: <span itemprop="reservationNumber">{{reservationNumber.value}}</span><br/>
+  <link itemprop="reservationStatus" href="http://schema.org/{{reservationStatus.value}}"/>
+  <div itemprop="underName" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{underName_name.value}}"/>
+      <meta itemprop="email" content="{{underName_email.value}}"/>
+  </div>
+  <div itemprop="bookingAgent" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{bookingAgent_name.value}}"/>
+      <link itemprop="url" href="{{bookingAgent_url.value}}"/>
+  </div>
+  <meta itemprop="bookingTime" content="{{bookingTime.value_iso8601}}"/>
+  <div itemprop="programMembership" itemscope itemtype="http://schema.org/ProgramMembership">
+      <meta itemprop="memberNumber" content="{{programMembership_memberNumber.value}}"/>
+      <meta itemprop="program" content="{{programMembership_program.value}}"/>
+  </div>
+  <div itemprop="reservationFor" itemscope itemtype="http://schema.org/FoodEstablishment">
+    Restaurant: <strong><span itemprop="name">{{reservationFor_name.value}}</span></strong><br/>
+    (<a itemprop="url" href="{{reservationFor_url.value}}">{{reservationFor_url.value}}</a>)<br/>
+    Phone: <span itemprop="telephone">{{reservationFor_telephone.value}}</span><br/>
+    <link itemprop="image" href="{{reservationFor_image.value}}"/>
+
+    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="streetAddress">{{reservationFor_address_streetAddress.value}}</span><br/>
+      <span itemprop="addressLocality">{{reservationFor_address_addressLocality.value}}</span><br/>
+      <span itemprop="addressRegion">{{reservationFor_address_addressRegion.value}}</span><br/>
+      <span itemprop="postalCode">{{reservationFor_address_postalCode.value}}</span>
+      <span itemprop="addressCountry">{{reservationFor_address_addressCountry.value}}</span><br/>
+    </div>
+  </div>
+  <br/>
+  Party Size: <span itemprop="partySize">{{partySize.value}}</span><br/>
+  <meta itemprop="startTime" content="{{startTime.value_iso8601}}"/>
+  Starts at: {{startTime.value_human}}<br/>
+
+  <link itemprop="cancelReservationUrl" href="{{cancelReservationUrl.value}}"/>
+  <link itemprop="confirmReservationUrl" href="{{confirmReservationUrl.value}}"/>
+  <link itemprop="modifyReservationUrl" href="{{modifyReservationUrl.value}}"/>
+  <meta itemprop="modifiedTime" content="{{modifiedTime.value_iso8601}}"/>
+  <br/>
+  Price: <span itemprop="price">{{price.value}}</span> <span itemprop="priceCurrency">{{priceCurrency.value}}</span><br/>
+  <br/>
+  {{# url.value }}
+    <a itemprop="url" href="{{url.value}}">View your reservation online.</a><br/>
+  {{/ url.value }}
+</div>
+</p>
+</body>
+</html>
