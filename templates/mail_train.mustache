@@ -1,6 +1,6 @@
 Return-Path: {{user.email}}
 From: Fake Reservation System <{{user.email}}>
-Subject: [FRS] {{form_type_uc}} Reservation
+Subject: [FRS] {{reservationFor_trainCompany.value}} - {{reservationFor_trainNumber.value}} - {{reservationFor_departureTime.value_human}} - {{form_type_uc}} Reservation
 Date: {{email_date}}
 X-Mailer: FRS/1.0
 MIME-Version: 1.0
@@ -9,7 +9,7 @@ Content-Type: text/html; charset=utf-8
 <html>
 <body>
 <p>
-<h1>YOUR RESERVATION DETAILS</h1>
+<h1>YOUR TRAIN RESERVATION</h1>
 </p>
 <p>
 <div itemscope itemtype="http://schema.org/TrainReservation">
@@ -35,20 +35,26 @@ Content-Type: text/html; charset=utf-8
       <meta itemprop="program" content="{{programMembership_program.value}}"/>
   </div>
   <div itemprop="reservationFor" itemscope itemtype="http://schema.org/TrainTrip">
-    <meta itemprop="arrivalPlatform" content="{{reservationFor_arrivalPlatform.value}}"/>
-    <div itemprop="arrivalStation" itemscope itemtype="http://schema.org/TrainStation">
-        <meta itemprop="name" content="{{reservationFor_arrivalStation_name.value}}"/>
-    </div>
-    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value_iso8601}}"/>
-    <meta itemprop="departurePlatform" content="{{reservationFor_departurePlatform.value}}"/>
-    <div itemprop="departureStation" itemscope itemtype="http://schema.org/TrainStation">
-        <meta itemprop="name" content="{{reservationFor_departureStation_name.value}}"/>
-    </div>
-    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value_iso8601}}"/>
     <meta itemprop="trainCode" content="{{reservationFor_trainCode.value}}"/>
-    <meta itemprop="trainCompany" content="{{reservationFor_trainCompany.value}}"/>
     <meta itemprop="trainName" content="{{reservationFor_trainName.value}}"/>
-    <meta itemprop="trainNumber" content="{{reservationFor_trainNumber.value}}"/>
+    Train: <span itemprop="trainCompany">{{reservationFor_trainCompany.value}}</span> -
+    <span itemprop="trainNumber">{{reservationFor_trainNumber.value}}</span><br/>
+    <br/>
+    <meta itemprop="departureTime" content="{{reservationFor_departureTime.value_iso8601}}"/>
+    Departs: {{reservationFor_departureTime.value_human}} from 
+    <div itemprop="departureStation" itemscope itemtype="http://schema.org/TrainStation">
+        <span itemprop="name">{{reservationFor_departureStation_name.value}}</span>
+    </div>
+    (Platform <span itemprop="departurePlatform">{{reservationFor_departurePlatform.value}}</span>)<br/>
+    <br/>
+
+    <meta itemprop="arrivalTime" content="{{reservationFor_arrivalTime.value_iso8601}}"/>
+    Arrives: {{reservationFor_arrivalTime.value_human}} at
+    <div itemprop="arrivalStation" itemscope itemtype="http://schema.org/TrainStation">
+        <span itemprop="name">{{reservationFor_arrivalStation_name.value}}</span>
+    </div>
+    (Platform <span itemprop="arrivalPlatform">{{reservationFor_arrivalPlatform.value}}</span>)<br/>
+
   </div>
   <div itemprop="reservedTicket" itemscope itemtype="http://schema.org/Ticket">
     <meta itemprop="additionalTicketText" content="{{reservedTicket_additionalTicketText.value}}"/>
@@ -56,9 +62,9 @@ Content-Type: text/html; charset=utf-8
     Price: <span itemprop="price">{{reservedTicket_price.value}}</span> <span itemprop="priceCurrency">{{reservedTicket_priceCurrency.value}}</span>
     <link itemprop="printUrl" href="{{reservedTicket_printUrl.value}}"/>
     <div itemprop="ticketedSeat" itemscope itemtype="http://schema.org/Seat">
-      <meta itemprop="seatingType" content="{{reservedTicket_ticketedSeat_seatingType.value}}"/>
-      <meta itemprop="seatRow" content="{{reservedTicket_ticketedSeat_seatRow.value}}"/>
-      <meta itemprop="seatNumber" content="{{reservedTicket_ticketedSeat_seatNumber.value}}"/>
+      Seat: <span itemprop="seatingType">{{reservedTicket_ticketedSeat_seatingType.value}}</span>,
+      <span itemprop="seatRow">{{reservedTicket_ticketedSeat_seatRow.value}}</span>,
+      <span itemprop="seatNumber">{{reservedTicket_ticketedSeat_seatNumber.value}}</span>)<br/>
     </div>
     <meta itemprop="ticketNumber" content="{{reservedTicket_ticketNumber.value}}"/>
     <meta itemprop="ticketToken" content="{{reservedTicket_ticketToken.value}}"/>

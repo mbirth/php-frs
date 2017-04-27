@@ -120,7 +120,7 @@
             "short": true
         },
         "reservationFor_trainCompany": {
-            "title": "Train Operator",
+            "title": "Train Operator*",
             "type": "text",
             "required": false,
             "group": 0,
@@ -134,7 +134,7 @@
             "short": true
         },
         "reservationFor_trainNumber": {
-            "title": "Train number",
+            "title": "Train number*",
             "type": "text",
             "required": false,
             "group": 0,
