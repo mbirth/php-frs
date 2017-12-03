@@ -61,7 +61,7 @@
         },
         "dropoffLocation_address_postalCode": {
             "title": "Zip Code",
-            "type": "number",
+            "type": "text",
             "required": true,
             "group": "do",
             "short": true
@@ -124,7 +124,7 @@
         },
         "pickupLocation_address_postalCode": {
             "title": "Zip Code",
-            "type": "number",
+            "type": "text",
             "required": true,
             "group": "pu",
             "short": true

@@ -158,7 +158,7 @@
         },
         "reservationFor_location_address_postalCode": {
             "title": "Zip Code",
-            "type": "number",
+            "type": "text",
             "required": true,
             "group": 1,
             "short": true
