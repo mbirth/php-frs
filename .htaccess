@@ -1,3 +1,5 @@
+RedirectMatch 404 ^/.git/
+
 <Files ~ "\.json$">
     Require all denied
 </Files>
