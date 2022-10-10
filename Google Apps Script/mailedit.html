@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Mailed it!</title>
+  </head>
+  <body>
+    <p>
+      Mail (hopefully) sent to <strong><?= Session.getActiveUser().getEmail() ?></strong>. You are allowed to send <?= MailApp.getRemainingDailyQuota() ?> more mails today.
+    </p>
+    <p>
+      <a href="https://raspi.mbirth.de/dev/FRS/">Return to FRS</a>
+    </p>
+  </body>
+</html>
